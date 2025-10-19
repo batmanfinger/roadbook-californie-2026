@@ -309,15 +309,7 @@ function setupEventListeners() {
   });
 }
 
-// ==========================================
-// UTILITAIRES
-// ==========================================
-
-// Fonction pour future intégration Google Maps
-function initMap() {
-  // TODO: Intégrer Google Maps API
-  console.log('Google Maps integration coming soon...');
-}
+// La fonction initMap est définie dans map.js
 
 // ==========================================
 // TOGGLE SECTIONS (Mobile)
