@@ -32,6 +32,12 @@ document.addEventListener('DOMContentLoaded', () => {
   renderDays();
   setupEventListeners();
   
+  // S'assurer que la section map est visible avant d'initialiser
+  const mapElement = document.getElementById('map');
+  if (mapElement) {
+    mapElement.classList.add('open');
+  }
+  
   // Initialiser la carte après un court délai
   setTimeout(() => {
     if (typeof initMap === 'function') {
@@ -328,6 +334,11 @@ function toggleSection(sectionName) {
     } else {
         content.classList.add('open');
         toggle.classList.add('rotated');
+        
+        // Si c'est la carte, recalculer sa taille après ouverture
+        if (sectionName === 'map' && map) {
+            setTimeout(() => map.invalidateSize(), 100);
+        }
     }
 }
 
@@ -339,6 +350,19 @@ window.addEventListener('load', function() {
         if (daysContainer && calendarToggle) {
             daysContainer.classList.add('open');
             calendarToggle.classList.add('rotated');
+        }
+        
+        // Sur mobile, ouvrir aussi la carte par défaut
+        const mapElement = document.getElementById('map');
+        const mapToggle = document.getElementById('map-toggle');
+        if (mapElement && mapToggle) {
+            mapElement.classList.add('open');
+            mapToggle.classList.add('rotated');
+            
+            // Recalculer la taille de la carte après ouverture
+            setTimeout(() => {
+                if (map) map.invalidateSize();
+            }, 100);
         }
     }
 });
