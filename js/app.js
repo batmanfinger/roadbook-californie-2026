@@ -57,6 +57,9 @@ function renderDays() {
     const dayCard = createDayCard(day);
     container.appendChild(dayCard);
   });
+  
+  // Ajouter les écouteurs pour les activités cliquables
+  setupActivityListeners();
 }
 
 function createDayCard(day) {
@@ -231,11 +234,13 @@ function openPlaceModal(placeName) {
   const modal = document.getElementById('place-modal');
   const modalBody = document.getElementById('modal-body');
   
-  // Image Unsplash
-  const imageUrl = `https://source.unsplash.com/1200x400/?${encodeURIComponent(placeInfo.query || placeName)}`;
+  // Générer le nom de fichier image basé sur le nom du lieu
+  const imageFileName = placeName.toLowerCase().replace(/\s+/g, '-').replace(/[^a-z0-9-]/g, '');
+  const imageUrl = placeInfo.image || `images/places/${imageFileName}.jpg`;
+  const defaultImage = 'images/places/default.svg';
   
   modalBody.innerHTML = `
-    <div class="modal-header-image" style="background-image: url('${imageUrl}')"></div>
+    <div class="modal-header-image" style="background-image: url('${imageUrl}'), url('${defaultImage}'); background-size: cover; background-position: center;"></div>
     <div class="modal-body">
       <h2 class="modal-title">${placeName}</h2>
       ${placeInfo.description ? `
@@ -281,6 +286,19 @@ function closePlaceModal() {
 // ==========================================
 // EVENT LISTENERS
 // ==========================================
+
+function setupActivityListeners() {
+  // Attacher les écouteurs aux activités cliquables
+  document.querySelectorAll('.activity-item[data-clickable="true"]').forEach(activityElement => {
+    activityElement.addEventListener('click', (e) => {
+      e.stopPropagation(); // Empêcher la propagation au day-card
+      const activityName = activityElement.dataset.activityName;
+      if (activityName) {
+        openPlaceModal(activityName);
+      }
+    });
+  });
+}
 
 function setupEventListeners() {
   // Toggle sections (calendar et map)
