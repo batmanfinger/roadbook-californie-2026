@@ -40,6 +40,16 @@ function initMap() {
     minZoom: 5
   }).addTo(map);
 
+  // Forcer le recalcul de la taille de la carte avec plusieurs tentatives
+  setTimeout(() => map.invalidateSize(), 100);
+  setTimeout(() => map.invalidateSize(), 300);
+  setTimeout(() => map.invalidateSize(), 500);
+
+  // Recalculer aussi au redimensionnement de la fenêtre
+  window.addEventListener('resize', () => {
+    if (map) map.invalidateSize();
+  });
+
   // Dessiner l'itinéraire
   drawRoute();
 
