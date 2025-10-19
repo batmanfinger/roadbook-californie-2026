@@ -1,0 +1,716 @@
+/* ==========================================
+   ROADBOOK CALIFORNIE 2026 - STYLES
+   Design: Minimal Luxury
+   ========================================== */
+
+/* Reset & Base */ 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --color-black: #000000;
+    --color-dark-gray: #333333;
+    --color-gray: #666666;
+    --color-light-gray: #999999;
+    --color-border: #e0e0e0;
+    --color-bg-light: #fafbfc;
+    --color-white: #ffffff;
+    --color-accent: #0077BE;
+    
+    --font-weight-thin: 200;
+    --font-weight-light: 300;
+    --font-weight-regular: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    font-weight: var(--font-weight-light);
+    color: var(--color-dark-gray);
+    background: var(--color-white);
+    line-height: 1.6;
+}
+
+/* ==========================================
+   HERO IMAGE
+   ========================================== */
+
+.hero {
+    height: 600px;
+    background: linear-gradient(to bottom, rgba(0,0,0,0), rgba(0,0,0,0.3)),
+                url('https://images.unsplash.com/photo-1519335337423-a3357c2cd12e?w=1920&q=85');
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 60px 50px;
+}
+
+.hero-overlay {
+    width: 100%;
+    max-width: 1200px;
+}
+
+.hero-title {
+    margin-bottom: 40px;
+}
+
+.hero-title h1 {
+    color: var(--color-white);
+    font-size: 4rem;
+    font-weight: var(--font-weight-thin);
+    letter-spacing: 8px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    text-shadow: 0 2px 10px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    color: rgba(255,255,255,0.95);
+    font-size: 1.2rem;
+    font-weight: var(--font-weight-light);
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.hero-caption {
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-light);
+    letter-spacing: 1px;
+    line-height: 1.6;
+    border-left: 3px solid var(--color-white);
+    padding-left: 25px;
+    text-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+/* ==========================================
+   STATS
+   ========================================== */
+
+.stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    background: var(--color-white);
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.stat {
+    padding: 40px 30px;
+    text-align: center;
+    border-right: 1px solid var(--color-border);
+    transition: background 0.3s ease;
+}
+
+.stat:last-child {
+    border-right: none;
+}
+
+.stat:hover {
+    background: var(--color-bg-light);
+}
+
+.stat-label {
+    display: block;
+    font-size: 0.7rem;
+    color: var(--color-light-gray);
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    font-weight: var(--font-weight-medium);
+}
+
+.stat-value {
+    display: block;
+    font-size: 2rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-light);
+    margin-bottom: 8px;
+}
+
+.stat-detail {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--color-light-gray);
+    font-weight: var(--font-weight-light);
+}
+
+/* ==========================================
+   MAIN CONTENT
+   ========================================== */
+
+.main-content {
+    display: grid;
+    grid-template-columns: 480px 1fr;
+    background: var(--color-white);
+    min-height: 600px;
+}
+
+/* ==========================================
+   CALENDAR (Sidebar)
+   ========================================== */
+
+.calendar {
+    background: var(--color-bg-light);
+    border-right: 1px solid var(--color-border);
+    padding: 40px;
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+.calendar-header {
+    margin-bottom: 35px;
+}
+
+.calendar-header h2 {
+    font-size: 2rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.calendar-header p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-light);
+}
+
+/* Day Card */
+.day-card {
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    padding: 25px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.day-card:hover {
+    border-color: var(--color-black);
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+}
+
+.day-card.active {
+    border-color: var(--color-accent);
+    box-shadow: 0 2px 12px rgba(0,119,190,0.15);
+}
+
+.day-card-header {
+    display: flex;
+    gap: 25px;
+}
+
+.day-number {
+    min-width: 70px;
+    text-align: center;
+    padding-top: 5px;
+}
+
+.day-number .number {
+    font-size: 2.5rem;
+    font-weight: var(--font-weight-thin);
+    color: var(--color-black);
+    line-height: 1;
+    margin-bottom: 5px;
+}
+
+.day-number .month {
+    font-size: 0.7rem;
+    color: var(--color-light-gray);
+    letter-spacing: 1px;
+    font-weight: var(--font-weight-medium);
+    text-transform: uppercase;
+}
+
+.day-content {
+    flex: 1;
+}
+
+.day-date {
+    font-size: 0.75rem;
+    color: var(--color-light-gray);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 8px;
+    font-weight: var(--font-weight-medium);
+}
+
+.day-title {
+    font-size: 1.3rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    margin-bottom: 5px;
+    letter-spacing: 0.5px;
+}
+
+.day-location {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    margin-bottom: 12px;
+    font-weight: var(--font-weight-light);
+}
+
+.day-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-size: 0.8rem;
+    color: var(--color-light-gray);
+}
+
+.day-meta span {
+    font-weight: var(--font-weight-light);
+}
+
+.day-meta .priority {
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+}
+
+/* Day Details (Accordion) */
+.day-details {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+}
+
+.day-details.open {
+    max-height: 2000px;
+    padding-top: 20px;
+    margin-top: 20px;
+    border-top: 1px solid var(--color-border);
+}
+
+.day-activities {
+    margin-bottom: 20px;
+}
+
+.day-activities h4 {
+    font-size: 0.9rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.activity-item {
+    padding: 15px;
+    background: var(--color-bg-light);
+    border: 1px solid var(--color-border);
+    margin-bottom: 10px;
+    transition: all 0.2s ease;
+}
+
+.activity-item.clickable {
+    cursor: pointer;
+}
+
+.activity-item.clickable:hover {
+    border-color: var(--color-accent);
+    background: var(--color-white);
+}
+
+.activity-name {
+    font-size: 1rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    margin-bottom: 5px;
+}
+
+.activity-meta {
+    font-size: 0.75rem;
+    color: var(--color-gray);
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ==========================================
+   MAP SECTION
+   ========================================== */
+
+.map-section {
+    padding: 40px;
+    background: var(--color-white);
+}
+
+.map-header {
+    margin-bottom: 25px;
+}
+
+.map-header h3 {
+    font-size: 2rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-light);
+    letter-spacing: 2px;
+    margin-bottom: 8px;
+}
+
+.map-header p {
+    color: var(--color-gray);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-light);
+}
+
+/* Map container */
+#map {
+    height: 650px;
+    border: 1px solid var(--color-border);
+    border-radius: 8px;
+    z-index: 1;
+}
+
+/* Leaflet customization */
+.leaflet-popup-content-wrapper {
+    border-radius: 8px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+}
+
+.leaflet-popup-content {
+    margin: 12px 16px;
+}
+
+/* ==========================================
+   MODAL
+   ========================================== */
+
+.modal {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+.modal.hidden {
+    display: none;
+}
+
+.modal-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+}
+
+.modal-content {
+    position: relative;
+    background: var(--color-white);
+    border-radius: 8px;
+    max-width: 800px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+
+.modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: var(--color-white);
+    border: 1px solid var(--color-border);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    z-index: 10;
+}
+
+.modal-close:hover {
+    background: var(--color-black);
+    border-color: var(--color-black);
+}
+
+.modal-close:hover svg {
+    stroke: var(--color-white);
+}
+
+.modal-header-image {
+    height: 300px;
+    background-size: cover;
+    background-position: center;
+    background-color: var(--color-bg-light);
+}
+
+.modal-body {
+    padding: 40px;
+}
+
+.modal-title {
+    font-size: 2rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-regular);
+    margin-bottom: 10px;
+}
+
+.modal-subtitle {
+    font-size: 0.9rem;
+    color: var(--color-gray);
+    margin-bottom: 30px;
+}
+
+.modal-description {
+    font-size: 1rem;
+    color: var(--color-dark-gray);
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.modal-highlights {
+    margin-bottom: 30px;
+}
+
+.modal-highlights h4 {
+    font-size: 1.1rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 15px;
+}
+
+.modal-highlights ul {
+    list-style: none;
+}
+
+.modal-highlights li {
+    padding: 8px 0;
+    padding-left: 25px;
+    position: relative;
+    color: var(--color-dark-gray);
+}
+
+.modal-highlights li:before {
+    content: '•';
+    position: absolute;
+    left: 0;
+    color: var(--color-accent);
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.modal-info {
+    background: var(--color-bg-light);
+    padding: 20px;
+    border-radius: 4px;
+    margin-bottom: 30px;
+}
+
+.modal-info h4 {
+    font-size: 1rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+    margin-bottom: 12px;
+}
+
+.modal-info p {
+    font-size: 0.9rem;
+    color: var(--color-dark-gray);
+    margin-bottom: 8px;
+}
+
+.modal-actions {
+    display: flex;
+    gap: 15px;
+}
+
+.modal-button {
+    flex: 1;
+    padding: 15px 25px;
+    border: 1px solid var(--color-border);
+    background: var(--color-white);
+    color: var(--color-black);
+    font-size: 0.9rem;
+    font-weight: var(--font-weight-medium);
+    text-decoration: none;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.modal-button:hover {
+    background: var(--color-black);
+    border-color: var(--color-black);
+    color: var(--color-white);
+}
+
+/* ==========================================
+   TOGGLE SECTIONS (Mobile)
+   ========================================== */
+
+.toggle-btn {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: transform 0.3s ease;
+}
+
+.toggle-btn svg {
+    stroke: var(--color-gray);
+}
+
+.toggle-btn.rotated {
+    transform: rotate(180deg);
+}
+
+.section-header-content {
+    flex: 1;
+}
+
+/* ==========================================
+   RESPONSIVE
+   ========================================== */
+
+@media (max-width: 1024px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+    
+    .calendar {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+        max-height: 500px;
+    }
+    
+    .stats {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .stat:nth-child(2) {
+        border-right: none;
+    }
+    
+    .stat:nth-child(3) {
+        border-right: 1px solid var(--color-border);
+    }
+}
+
+@media (max-width: 768px) {
+    /* Hero */
+    .hero {
+        height: 450px;
+        padding: 30px 20px;
+        justify-content: flex-end;
+    }
+    
+    .hero-title h1 {
+        font-size: 2rem;
+        letter-spacing: 3px;
+        margin-bottom: 10px;
+    }
+    
+    .hero-subtitle {
+        font-size: 0.9rem;
+        letter-spacing: 0.5px;
+    }
+    
+    .hero-caption {
+        font-size: 1rem;
+        padding-left: 15px;
+        margin-top: 20px;
+    }
+    
+    .hero-title {
+        margin-bottom: 20px;
+    }
+    
+    /* Stats cachés sur mobile */
+    .stats {
+        display: none;
+    }
+    
+    /* Sections repliables */
+    .main-content {
+        min-height: 0;
+        height: auto;
+        display: block;
+    }
+    
+    .calendar,
+    .map-section {
+        background: transparent;
+        padding: 0;
+        max-height: none;
+        overflow: visible;
+        min-height: 0;
+        height: auto;
+    }
+    
+    .calendar-header,
+    .map-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        padding: 20px;
+        background: var(--color-white);
+        border-bottom: 1px solid var(--color-border);
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        margin: 0;
+    }
+    
+    .toggle-btn {
+        display: block;
+    }
+    
+    .section-content {
+        display: none;
+    }
+    
+    .section-content.open {
+        display: block;
+        background: var(--color-bg-light);
+    }
+    
+    .days-container {
+        padding: 20px;
+    }
+    
+    #map {
+        margin: 20px;
+        height: 400px;
+    }
+    
+    /* Autres ajustements mobile */
+    .calendar {
+        border-right: none;
+        border-bottom: 1px solid var(--color-border);
+    }
+    
+    .map-section {
+        padding: 0;
+    }
+    
+    .day-card {
+        padding: 20px;
+    }
+    
+    .day-number .number {
+        font-size: 2rem;
+    }
+    
+    .modal-body {
+        padding: 25px;
+    }
+}
