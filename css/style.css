@@ -91,6 +91,13 @@ body {
     text-shadow: 0 2px 8px rgba(0,0,0,0.5);
 }
 
+.hero-buttons {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
 .hero-story-btn {
     margin-top: 40px;
     display: inline-flex;
@@ -1235,5 +1242,414 @@ body {
     /* Cacher le bouton quand la carte est repliée sur mobile */
     .map-section #map:not(.open) ~ .locate-me-btn {
         display: none;
+    }
+}
+
+/* ==========================================
+   CARNET D'EXPLORATEUR
+   À ajouter à la fin de style.css
+   ========================================== */
+
+.explorer-mode {
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    display: flex;
+    flex-direction: column;
+    transition: opacity 0.3s ease;
+}
+
+.explorer-mode.hidden {
+    display: none;
+    opacity: 0;
+}
+
+/* Header du carnet */
+.explorer-header {
+    position: relative;
+    padding: 25px 20px;
+    background: rgba(0,0,0,0.2);
+    backdrop-filter: blur(10px);
+    border-bottom: 2px solid rgba(255,255,255,0.2);
+}
+
+.explorer-header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.explorer-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: white;
+}
+
+.explorer-title h2 {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-medium);
+    margin: 0;
+}
+
+.explorer-progress {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.9rem;
+}
+
+.progress-badge {
+    background: rgba(255,255,255,0.2);
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-weight: var(--font-weight-medium);
+}
+
+.explorer-close {
+    background: rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.explorer-close:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.explorer-close svg {
+    stroke: white;
+}
+
+/* Contenu principal */
+.explorer-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 40px 20px;
+}
+
+.explorer-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+/* Card de lieu */
+.explorer-card {
+    background: white;
+    border-radius: 16px;
+    padding: 30px;
+    margin-bottom: 20px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.15);
+}
+
+.explorer-card-header {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid #f0f0f0;
+}
+
+.explorer-icon {
+    font-size: 3rem;
+    line-height: 1;
+}
+
+.explorer-place-name {
+    flex: 1;
+}
+
+.explorer-place-name h3 {
+    font-size: 1.5rem;
+    color: var(--color-black);
+    font-weight: var(--font-weight-medium);
+    margin: 0 0 5px 0;
+}
+
+.explorer-badge-earned {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-medium);
+}
+
+.explorer-badge-locked {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #e0e0e0;
+    color: #999;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: var(--font-weight-medium);
+}
+
+/* Sections */
+.explorer-section {
+    margin-bottom: 30px;
+}
+
+.explorer-section:last-child {
+    margin-bottom: 0;
+}
+
+.explorer-section-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-black);
+    margin-bottom: 15px;
+}
+
+.section-emoji {
+    font-size: 1.3rem;
+}
+
+/* Before section */
+.fun-fact {
+    background: #fff9e6;
+    border-left: 4px solid #ffd93d;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.fun-fact strong {
+    color: #f39c12;
+    font-weight: var(--font-weight-semibold);
+}
+
+.question-box {
+    background: #e3f2fd;
+    border-left: 4px solid #2196f3;
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.question-box p {
+    margin: 0 0 10px 0;
+    font-weight: var(--font-weight-medium);
+    color: #1976d2;
+}
+
+.answer-box {
+    background: #f1f8e9;
+    border: 2px solid #8bc34a;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: var(--font-weight-medium);
+    color: #558b2f;
+}
+
+/* During section - Checklist */
+.mission-checklist {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.mission-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    margin-bottom: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.mission-item:hover {
+    background: #e9ecef;
+    transform: translateX(5px);
+}
+
+.mission-item.completed {
+    background: #d4edda;
+    border: 2px solid #28a745;
+}
+
+.mission-checkbox {
+    width: 24px;
+    height: 24px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.mission-item.completed .mission-checkbox {
+    background: #28a745;
+    border-color: #28a745;
+}
+
+.mission-checkbox svg {
+    display: none;
+    stroke: white;
+    stroke-width: 3;
+}
+
+.mission-item.completed .mission-checkbox svg {
+    display: block;
+}
+
+.mission-text {
+    flex: 1;
+    font-weight: var(--font-weight-regular);
+    color: var(--color-dark-gray);
+}
+
+.mission-item.completed .mission-text {
+    color: #155724;
+    font-weight: var(--font-weight-medium);
+}
+
+/* After section */
+.discovery-input {
+    width: 100%;
+    min-height: 100px;
+    padding: 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+.discovery-input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.discovery-saved {
+    display: none;
+    align-items: center;
+    gap: 8px;
+    margin-top: 10px;
+    color: #28a745;
+    font-weight: var(--font-weight-medium);
+    font-size: 0.9rem;
+}
+
+.discovery-saved.show {
+    display: flex;
+}
+
+/* Navigation */
+.explorer-nav {
+    position: fixed;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 10;
+}
+
+.explorer-nav-btn {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(10px);
+    border: 2px solid rgba(102,126,234,0.3);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.explorer-nav-btn:hover {
+    background: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+}
+
+.explorer-nav-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+.explorer-nav-btn:disabled:hover {
+    transform: none;
+}
+
+.explorer-nav-btn svg {
+    stroke: #667eea;
+    stroke-width: 2;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .explorer-content {
+        padding: 20px 15px;
+    }
+    
+    .explorer-card {
+        padding: 20px;
+    }
+    
+    .explorer-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+    
+    .explorer-icon {
+        font-size: 2.5rem;
+    }
+    
+    .explorer-place-name h3 {
+        font-size: 1.3rem;
+    }
+    
+    .explorer-nav {
+        bottom: 20px;
+    }
+    
+    .explorer-nav-btn {
+        width: 50px;
+        height: 50px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-buttons {
+        margin-top: 25px;
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .hero-story-btn {
+        width: 100%;
+        justify-content: center;
     }
 }

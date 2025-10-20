@@ -319,6 +319,15 @@ function setupEventListeners() {
       }
     });
   }
+
+  const startExplorerBtn = document.getElementById('start-explorer-btn');
+  if (startExplorerBtn) {
+    startExplorerBtn.addEventListener('click', () => {
+      if (typeof explorerMode !== 'undefined') {
+        explorerMode.open();
+      }
+    });
+  }
   
   // Bouton Ma position sur la carte
   const locateMeBtn = document.getElementById('locate-me-btn');
