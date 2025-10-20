@@ -94,6 +94,8 @@ class StoryMode {
               <span class="story-duration"></span>
             </div>
             
+            <p class="story-description"></p>
+            
             <div class="story-weather">
               <h4><span class="weather-icon"></span> Météo prévue</h4>
               <div class="weather-grid">
