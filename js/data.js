@@ -784,10 +784,10 @@ const tripData = {
   },
   weatherData: {
     "San Francisco": {
-      tempMin: 9,
-      tempMax: 16,
-      conditions: "Partiellement nuageux",
-      rain: "Pluie possible (40%)",
+      tempMin: 8,
+      tempMax: 17,
+      conditions: "Frais et brumeux, surtout le matin. Vent océanique modéré.",
+      rain: "Pluie possible (35%)",
       clothing: "Veste imperméable, pull, couches",
       icon: "🌤️",
       weatherUrl: "https://www.accuweather.com/fr/us/san-francisco/94103/daily-weather-forecast/347629"
@@ -795,8 +795,8 @@ const tripData = {
     "Monterey": {
       tempMin: 8,
       tempMax: 16,
-      conditions: "Doux et ensoleillé",
-      rain: "Peu de pluie (20%)",
+      conditions: "Climat côtier frais, influencé par l'océan.",
+      rain: "Peu de pluie (25%)",
       clothing: "Pull léger, veste pour le soir",
       icon: "☀️",
       weatherUrl: "https://www.accuweather.com/fr/us/monterey/93940/daily-weather-forecast/331966"
@@ -804,7 +804,7 @@ const tripData = {
     "Monterey / Carmel": {
       tempMin: 8,
       tempMax: 16,
-      conditions: "Doux et ensoleillé",
+      conditions: "Climat côtier frais, influencé par l'océan.",
       rain: "Peu de pluie (20%)",
       clothing: "Pull léger, veste pour le soir",
       icon: "☀️",
@@ -812,35 +812,35 @@ const tripData = {
     },
     "Santa Barbara": {
       tempMin: 10,
-      tempMax: 18,
-      conditions: "Ensoleillé et agréable",
-      rain: "Très peu de pluie (10%)",
+      tempMax: 19,
+      conditions: "Plus doux et ensoleillé, avec un climat méditerranéen.",
+      rain: "Très peu de pluie (20%)",
       clothing: "T-shirt + pull léger, lunettes soleil",
       icon: "☀️",
       weatherUrl: "https://www.accuweather.com/fr/us/santa-barbara/93101/daily-weather-forecast/327137"
     },
     "Los Angeles": {
       tempMin: 11,
-      tempMax: 19,
+      tempMax: 21,
       conditions: "Ensoleillé, temps idéal",
-      rain: "Rare (5%)",
+      rain: "Rare (10%)",
       clothing: "Vêtements légers, crème solaire",
       icon: "☀️",
       weatherUrl: "https://www.accuweather.com/fr/us/los-angeles/90012/daily-weather-forecast/347625"
     },
     "Los Angeles / Malibu": {
       tempMin: 11,
-      tempMax: 19,
+      tempMax: 21,
       conditions: "Ensoleillé, temps idéal",
-      rain: "Rare (5%)",
+      rain: "Rare (10%)",
       clothing: "Vêtements légers, crème solaire",
       icon: "☀️",
       weatherUrl: "https://www.accuweather.com/fr/us/malibu/90265/daily-weather-forecast/337141"
     },
     "San Diego": {
       tempMin: 12,
-      tempMax: 19,
-      conditions: "Ensoleillé et chaud",
+      tempMax: 22,
+      conditions: "Climat doux et agréable, presque printanier.",
       rain: "Quasiment aucune (5%)",
       clothing: "Shorts, t-shirts, maillot de bain",
       icon: "☀️",
