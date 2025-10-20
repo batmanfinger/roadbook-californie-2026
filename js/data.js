@@ -790,7 +790,7 @@ const tripData = {
       rain: "Pluie possible (40%)",
       clothing: "Veste imperméable, pull, couches",
       icon: "🌤️",
-      weatherUrl: "https://weather.com/weather/tenday/l/San+Francisco+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/san-francisco/94103/daily-weather-forecast/347629"
     },
     "Monterey": {
       tempMin: 8,
@@ -799,7 +799,7 @@ const tripData = {
       rain: "Peu de pluie (20%)",
       clothing: "Pull léger, veste pour le soir",
       icon: "☀️",
-      weatherUrl: "https://weather.com/weather/tenday/l/Monterey+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/monterey/93940/daily-weather-forecast/331966"
     },
     "Monterey / Carmel": {
       tempMin: 8,
@@ -808,7 +808,7 @@ const tripData = {
       rain: "Peu de pluie (20%)",
       clothing: "Pull léger, veste pour le soir",
       icon: "☀️",
-      weatherUrl: "https://weather.com/weather/tenday/l/Carmel+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/carmel-by-the-sea/93921/daily-weather-forecast/332066"
     },
     "Santa Barbara": {
       tempMin: 10,
@@ -817,7 +817,7 @@ const tripData = {
       rain: "Très peu de pluie (10%)",
       clothing: "T-shirt + pull léger, lunettes soleil",
       icon: "☀️",
-      weatherUrl: "https://weather.com/weather/tenday/l/Santa+Barbara+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/santa-barbara/93101/daily-weather-forecast/327137"
     },
     "Los Angeles": {
       tempMin: 11,
@@ -826,7 +826,7 @@ const tripData = {
       rain: "Rare (5%)",
       clothing: "Vêtements légers, crème solaire",
       icon: "☀️",
-      weatherUrl: "https://weather.com/weather/tenday/l/Los+Angeles+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/los-angeles/90012/daily-weather-forecast/347625"
     },
     "Los Angeles / Malibu": {
       tempMin: 11,
@@ -835,7 +835,7 @@ const tripData = {
       rain: "Rare (5%)",
       clothing: "Vêtements légers, crème solaire",
       icon: "☀️",
-      weatherUrl: "https://weather.com/weather/tenday/l/Malibu+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/malibu/90265/daily-weather-forecast/337141"
     },
     "San Diego": {
       tempMin: 12,
@@ -844,7 +844,7 @@ const tripData = {
       rain: "Quasiment aucune (5%)",
       clothing: "Shorts, t-shirts, maillot de bain",
       icon: "☀️",
-      weatherUrl: "https://weather.com/weather/tenday/l/San+Diego+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/san-diego/92101/daily-weather-forecast/347628"
     },
     "Monterey → Santa Barbara": {
       tempMin: 9,
@@ -853,7 +853,7 @@ const tripData = {
       rain: "Faible (15%)",
       clothing: "Couches, adaptable",
       icon: "🌤️",
-      weatherUrl: "https://weather.com/weather/tenday/l/Santa+Barbara+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/santa-barbara/93101/daily-weather-forecast/327137"
     },
     "Santa Barbara → Los Angeles": {
       tempMin: 10,
@@ -862,7 +862,7 @@ const tripData = {
       rain: "Faible (10%)",
       clothing: "Léger, lunettes de soleil",
       icon: "☀️",
-      weatherUrl: "https://weather.com/weather/tenday/l/Los+Angeles+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/los-angeles/90012/daily-weather-forecast/347625"
     },
     "Los Angeles → San Diego": {
       tempMin: 11,
@@ -871,7 +871,7 @@ const tripData = {
       rain: "Très faible (5%)",
       clothing: "Léger et confortable",
       icon: "☀️",
-      weatherUrl: "https://weather.com/weather/tenday/l/San+Diego+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/los-angeles/90012/daily-weather-forecast/347625"
     },
     "San Francisco → Monterey": {
       tempMin: 9,
@@ -880,7 +880,7 @@ const tripData = {
       rain: "Possible (30%)",
       clothing: "Veste + couches",
       icon: "🌤️",
-      weatherUrl: "https://weather.com/weather/tenday/l/Monterey+CA"
+      weatherUrl: "https://www.accuweather.com/fr/us/monterey/93940/daily-weather-forecast/331966"
     },
     "Paris": {
       tempMin: 5,
@@ -889,7 +889,7 @@ const tripData = {
       rain: "Variable",
       clothing: "Manteau d'hiver",
       icon: "🇫🇷",
-      weatherUrl: "https://weather.com/weather/tenday/l/Paris+France"
+      weatherUrl: "https://www.accuweather.com/fr/fr/paris/623/daily-weather-forecast/623"
     }
   }
 };
