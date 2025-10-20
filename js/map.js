@@ -221,9 +221,149 @@ function focusOnStop(dayNumber) {
   }
 }
 
+// Centrer sur un lieu précis avec ses coordonnées GPS
+function focusOnPlace(placeName, lat, lng) {
+  if (!map) return;
+  
+  // Centrer la carte sur le lieu
+  map.setView([lat, lng], 14, { animate: true });
+  
+  // Créer un marqueur temporaire pour le lieu
+  const placeIcon = L.divIcon({
+    className: 'place-marker',
+    html: `<div style="
+      background: #FF6B35;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      white-space: nowrap;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      border: 2px solid white;
+    ">${placeName}</div>`,
+    iconSize: [null, null],
+    iconAnchor: [null, null]
+  });
+  
+  // Supprimer les anciens marqueurs temporaires
+  map.eachLayer(layer => {
+    if (layer.options && layer.options.className === 'temp-place-marker') {
+      map.removeLayer(layer);
+    }
+  });
+  
+  // Ajouter le nouveau marqueur
+  const tempMarker = L.marker([lat, lng], { 
+    icon: placeIcon,
+    className: 'temp-place-marker'
+  })
+    .addTo(map)
+    .bindPopup(`
+      <div style="text-align: center;">
+        <strong style="font-size: 16px;">${placeName}</strong>
+      </div>
+    `)
+    .openPopup();
+  
+  console.log(`Carte centrée sur: ${placeName} (${lat}, ${lng})`);
+}
+
+// Fonction pour centrer la carte sur la position GPS de l'utilisateur
+function centerOnUserLocation() {
+  const locateBtn = document.getElementById('locate-me-btn');
+  
+  if (!navigator.geolocation) {
+    alert('La géolocalisation n\'est pas supportée par votre navigateur.');
+    return;
+  }
+  
+  // Ajouter l'animation de chargement
+  if (locateBtn) {
+    locateBtn.classList.add('locating');
+  }
+  
+  // Options de géolocalisation
+  const options = {
+    enableHighAccuracy: true,
+    timeout: 10000,
+    maximumAge: 0
+  };
+  
+  navigator.geolocation.getCurrentPosition(
+    (position) => {
+      const lat = position.coords.latitude;
+      const lng = position.coords.longitude;
+      
+      // Retirer l'animation
+      if (locateBtn) {
+        locateBtn.classList.remove('locating');
+      }
+      
+      // Centrer la carte
+      if (map) {
+        map.setView([lat, lng], 14, { animate: true });
+        
+        // Mettre à jour ou créer le marqueur utilisateur
+        if (userMarker) {
+          userMarker.setLatLng([lat, lng]).openPopup();
+        } else {
+          // Créer le marqueur s'il n'existe pas encore
+          const userIcon = L.divIcon({
+            className: 'user-marker',
+            html: `<div style="
+              width: 20px;
+              height: 20px;
+              border-radius: 50%;
+              background: #4285F4;
+              border: 4px solid white;
+              box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+            "></div>`,
+            iconSize: [20, 20],
+            iconAnchor: [10, 10]
+          });
+
+          userMarker = L.marker([lat, lng], { icon: userIcon })
+            .addTo(map)
+            .bindPopup('📍 Vous êtes ici')
+            .openPopup();
+        }
+      }
+      
+      console.log(`Centré sur votre position: ${lat}, ${lng}`);
+    },
+    (error) => {
+      // Retirer l'animation
+      if (locateBtn) {
+        locateBtn.classList.remove('locating');
+      }
+      
+      let message;
+      switch(error.code) {
+        case error.PERMISSION_DENIED:
+          message = "Vous avez refusé l'accès à votre position. Veuillez autoriser la géolocalisation dans les paramètres de votre navigateur.";
+          break;
+        case error.POSITION_UNAVAILABLE:
+          message = "Impossible de déterminer votre position. Vérifiez que le GPS est activé.";
+          break;
+        case error.TIMEOUT:
+          message = "La demande de géolocalisation a expiré. Réessayez.";
+          break;
+        default:
+          message = "Une erreur s'est produite lors de la géolocalisation.";
+      }
+      alert(message);
+      console.error('Erreur de géolocalisation:', error);
+    },
+    options
+  );
+}
+
 // Exposer les fonctions nécessaires
 window.initMap = initMap;
 window.focusOnStop = focusOnStop;
+window.focusOnPlace = focusOnPlace;
+window.centerOnUserLocation = centerOnUserLocation;
 
 
 // ==========================================

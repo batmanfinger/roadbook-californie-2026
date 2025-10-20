@@ -297,13 +297,39 @@ function setupActivityListeners() {
       e.stopPropagation(); // Empêcher la propagation au day-card
       const activityName = activityElement.dataset.activityName;
       if (activityName) {
+        // Ouvrir la modal classique par défaut
         openPlaceModal(activityName);
+        
+        // Alternative : Décommenter pour ouvrir le Story Mode à la place
+         if (typeof openStoryFromActivity === 'function') {
+           openStoryFromActivity(activityName);
+         }
       }
     });
   });
 }
 
 function setupEventListeners() {
+  // Bouton Story Mode dans le Hero
+  const startStoryBtn = document.getElementById('start-story-btn');
+  if (startStoryBtn) {
+    startStoryBtn.addEventListener('click', () => {
+      if (typeof storyMode !== 'undefined') {
+        storyMode.open();
+      }
+    });
+  }
+  
+  // Bouton Ma position sur la carte
+  const locateMeBtn = document.getElementById('locate-me-btn');
+  if (locateMeBtn) {
+    locateMeBtn.addEventListener('click', () => {
+      if (typeof centerOnUserLocation === 'function') {
+        centerOnUserLocation();
+      }
+    });
+  }
+  
   // Toggle sections (calendar et map)
   const calendarHeader = document.querySelector('.calendar-header');
   const mapHeader = document.querySelector('.map-header');
