@@ -375,6 +375,7 @@ body {
 .map-section {
     padding: 40px;
     background: var(--color-white);
+    position: relative;
 }
 
 .map-header {
@@ -1120,6 +1121,18 @@ body {
     
     .map-section {
         padding: 0;
+        position: relative;
+    }
+
+    .map-section #map:not(.open) ~ .locate-me-btn {
+        display: none;
+    }
+
+    .locate-me-btn {
+        bottom: 20px;
+        right: 20px;
+        width: 45px;
+        height: 45px;
     }
     
     .day-card {
