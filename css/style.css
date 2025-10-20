@@ -962,11 +962,28 @@ body {
 /* Responsive Story Mode */
 @media (max-width: 768px) {
     .story-overlay {
-        padding: 20px 60px;
+        padding: 80px 60px 20px 60px; /* Plus d'espace en haut pour le header */
+        justify-content: flex-start;
+    }
+
+    .story-info {
+        padding-top: 20px; /* Espace supplémentaire sous le header */
     }
     
     .story-title {
         font-size: 1.8rem;
+        margin-bottom: 6px;
+    }
+
+    .story-city {
+        font-size: 1rem;
+        margin-bottom: 12px;
+    }
+
+    .story-description {
+        font-size: 0.9rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
     }
     
     .story-actions {
