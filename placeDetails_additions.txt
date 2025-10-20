@@ -1,0 +1,147 @@
+// ==========================================
+// PLACE DETAILS - COMPLÉMENT POUR data.js
+// ==========================================
+// À copier-coller dans la section placeDetails de data.js
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 1 ==========
+"Arrivée SFO": {
+  query: "san francisco international airport",
+  description: "Aéroport international de San Francisco (SFO), porte d'entrée de votre aventure californienne ! Terminal moderne avec vue sur la baie.",
+  highlights: ["Navette BART vers SF", "Récupération bagages", "Location voiture"],
+  website: "https://www.flysfo.com",
+  booking: "Non"
+},
+"Installation Hôtel": {
+  query: "hotel caza fishermans wharf san francisco",
+  description: "Hotel Caza Fisherman's Wharf - Hôtel moderne et confortable au cœur du quartier historique de Fisherman's Wharf. Emplacement idéal pour explorer SF sans voiture les premiers jours.",
+  highlights: ["Quartier Fisherman's Wharf", "Proche attractions", "Parking disponible", "Chambres familiales"],
+  website: "https://www.hotelcazafishermanswharf.com",
+  booking: "Réservé"
+},
+"Balade Fisherman's Wharf": {
+  query: "fishermans wharf san francisco seafood",
+  description: "Quartier emblématique de San Francisco ! Ambiance maritime authentique, restaurants de fruits de mer, lions de mer bruyants au Pier 39, et vue sur Alcatraz et le Golden Gate.",
+  highlights: ["Lions de mer au Pier 39", "Restaurants fruits de mer", "Boudin Bakery (pain au levain)", "Vue sur Alcatraz", "Musiciens de rue"],
+  website: "https://www.fishermanswharf.org",
+  booking: "Non"
+},
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 2 ==========
+"Baker Beach": {
+  query: "baker beach san francisco golden gate view",
+  description: "Plage sauvage avec LA meilleure vue sur le Golden Gate Bridge ! Sable fin, vagues du Pacifique, et perspective unique sur le pont rouge orangé.",
+  highlights: ["Vue iconique Golden Gate", "Plage naturelle", "Marée basse idéale", "Photo parfaite"],
+  website: "https://www.parksconservancy.org/parks/baker-beach",
+  booking: "Non"
+},
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 3 ==========
+"Sausalito": {
+  query: "sausalito california waterfront village",
+  description: "Village côtier pittoresque au bord de la baie avec vue imprenable sur San Francisco. Galeries d'art, boutiques chics, et restaurants avec terrasses face à l'eau.",
+  highlights: ["Vue sur SF skyline", "Waterfront coloré", "Cafés et restaurants", "Ambiance méditerranéenne"],
+  website: "https://www.sausalito.org",
+  booking: "Non"
+},
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 4 ==========
+"Pier 39": {
+  query: "pier 39 san francisco sea lions",
+  description: "Jetée animée abritant la célèbre colonie de lions de mer ! Boutiques, restaurants, aquarium, et artistes de rue. Ambiance festive garantie.",
+  highlights: ["Colonie lions de mer", "Aquarium Bay", "Restaurants vue baie", "Manèges enfants"],
+  website: "https://www.pier39.com",
+  booking: "Non"
+},
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 5 ==========
+"Cannery Row": {
+  query: "cannery row monterey historic waterfront",
+  description: "Rue historique immortalisée par John Steinbeck. Anciennes conserveries transformées en restaurants, boutiques et galeries d'art le long du front de mer.",
+  highlights: ["Histoire des conserveries", "Restaurants fruits de mer", "Boutiques locales", "Front de mer pittoresque"],
+  website: "https://www.canneryrow.com",
+  booking: "Non"
+},
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 6 ==========
+"Carmel-by-the-Sea": {
+  query: "carmel by the sea village california",
+  description: "Village de conte de fées avec cottages européens, galeries d'art, boutiques bohèmes et plage de sable blanc. Charme absolu garanti !",
+  highlights: ["Architecture cottage", "Galeries d'art", "Plage magnifique", "Ambiance artistique"],
+  website: "https://www.carmelcalifornia.com",
+  booking: "Non"
+},
+"Carmel Beach": {
+  query: "carmel beach white sand california sunset",
+  description: "Plage de sable blanc immaculé bordée de cyprès. Eau turquoise, falaises escarpées, et couchers de soleil spectaculaires. Paradis des photographes !",
+  highlights: ["Sable blanc fin", "Cyprès côtiers", "Coucher soleil magique", "Chiens bienvenus"],
+  website: "https://www.carmelcalifornia.com/carmel-beach",
+  booking: "Non"
+},
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 8 ==========
+"Départ vers Santa Barbara": {
+  query: "us 101 california scenic highway",
+  description: "Route pittoresque à travers la Californie centrale via Salinas et King City. Paysages agricoles et collines ondulantes jusqu'à la côte de Santa Barbara.",
+  highlights: ["Highway US-101", "Vallée de Salinas", "Collines californiennes", "Arrivée côte SB"],
+  website: null,
+  booking: "Non"
+},
+"Stearns Wharf": {
+  query: "stearns wharf santa barbara pier",
+  description: "Jetée historique de 1872, la plus ancienne en bois de Californie ! Restaurants de fruits de mer, boutiques, et aquarium avec vue panoramique sur les montagnes.",
+  highlights: ["Jetée historique 1872", "Restaurants fruits de mer", "Vue montagnes", "Ty Warner Sea Center"],
+  website: "https://stearnswharf.org",
+  booking: "Non"
+},
+"Santa Barbara Beach": {
+  query: "santa barbara beach california palm trees",
+  description: "Plage de sable doré bordée de palmiers avec vue sur les Channel Islands. Eau calme, idéale pour se détendre après la route. Ambiance Riviera californienne !",
+  highlights: ["Palmiers emblématiques", "Eau calme", "Vue Channel Islands", "Coucher soleil"],
+  website: "https://santabarbaraca.com/beaches",
+  booking: "Non"
+},
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 9 ==========
+"Venice Beach Boardwalk": {
+  query: "venice beach boardwalk california street performers",
+  description: "Promenade iconique et excentrique de Los Angeles ! Street art incroyable, artistes de rue, Muscle Beach, et ambiance bohème californienne authentique.",
+  highlights: ["Street performers", "Muscle Beach", "Street art", "Skate park", "Ambiance unique"],
+  website: "https://www.venicebeach.com",
+  booking: "Non"
+},
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 14 ==========
+"Balboa Park": {
+  query: "balboa park san diego museums gardens",
+  description: "Parc urbain spectaculaire de 490 hectares ! 17 musées, jardins botaniques magnifiques, architecture hispanique, et zoo de San Diego. Un trésor culturel.",
+  highlights: ["17 musées différents", "Jardins botaniques", "Architecture hispanique", "Zoo San Diego", "Orgue en plein air"],
+  website: "https://www.balboapark.org",
+  booking: "Gratuit - musées payants"
+},
+
+// ========== ACTIVITÉS MANQUANTES - JOUR 15 ==========
+"Final La Jolla Cove Walk": {
+  query: "la jolla cove morning walk seals",
+  description: "Dernière balade matinale à La Jolla Cove pour dire au revoir aux phoques ! Moment paisible avant le départ, profitez de l'air marin et des souvenirs.",
+  highlights: ["Adieux aux phoques", "Lever de soleil", "Derniers moments Californie", "Photos souvenirs"],
+  website: "https://www.sandiego.gov",
+  booking: "Non"
+},
+"Vol Retour": {
+  query: "san diego international airport",
+  description: "Aéroport international de San Diego (Lindbergh Field). Petit aéroport pratique avec vue sur la baie. Fin de votre aventure californienne !",
+  highlights: ["Check-in anticip
+
+é", "Boutiques duty-free", "Restaurants vue piste", "Accès facile"],
+  website: "https://www.san.org",
+  booking: "Vol confirmé"
+},
+
+// ========== JOUR 16 ==========
+"Arrivée CDG": {
+  query: "aeroport charles de gaulle paris",
+  description: "Aéroport Paris-Charles de Gaulle (CDG) - Bienvenue de retour en France après 16 jours d'aventure californienne inoubliable !",
+  highlights: ["Terminal 2E/F", "Récupération bagages", "Douanes UE", "Transports vers Paris"],
+  website: "https://www.parisaeroport.fr",
+  booking: "Arrivée confirmée"
+},

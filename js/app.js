@@ -129,7 +129,10 @@ function createDayDetails(day) {
   }
   
   const activitiesHTML = day.activities.map(activity => {
-    const hasDetails = activity.lat && activity.lng && tripData.placeDetails[activity.name];
+    // Une activité est cliquable si elle a des coordonnées GPS ET un placeDetail
+    const hasCoordinates = activity.lat && activity.lng;
+    const hasPlaceDetail = tripData.placeDetails[activity.name];
+    const hasDetails = hasCoordinates && hasPlaceDetail;
     const clickableClass = hasDetails ? 'clickable' : '';
     
     const activityMeta = [];
