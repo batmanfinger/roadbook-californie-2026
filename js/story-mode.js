@@ -122,63 +122,6 @@ class StoryMode {
   </a>
 </div>
 */
-
-// ===================================================
-// Puis dans la méthode render(), AJOUTEZ ce code après la section Meta:
-// ===================================================
-
-render() {
-  const story = this.stories[this.currentIndex];
-  const container = document.getElementById('story-mode');
-  
-  // ... code existant (compteur, bg, titre, meta) ...
-  
-  // Meta
-  const metaParts = [];
-  if (story.time) metaParts.push(story.time);
-  if (story.duration) metaParts.push(`${story.duration}h`);
-  if (story.cost) metaParts.push(`${story.cost}€`);
-  container.querySelector('.story-meta').innerHTML = metaParts.join(' • ');
-  
-  // ===== AJOUTEZ CE NOUVEAU CODE ICI =====
-  
-  // Météo
-  const weatherData = tripData.weatherData && tripData.weatherData[story.city];
-  const weatherSection = container.querySelector('.story-weather');
-  
-  if (weatherData && weatherSection) {
-    // Afficher la section météo
-    weatherSection.style.display = 'block';
-    
-    // Icône
-    container.querySelector('.weather-icon').textContent = weatherData.icon || '🌤️';
-    
-    // Températures
-    container.querySelector('.weather-temp').textContent = `${weatherData.tempMin}-${weatherData.tempMax}°C`;
-    
-    // Conditions
-    container.querySelector('.weather-conditions').textContent = weatherData.conditions;
-    
-    // Précipitations
-    container.querySelector('.weather-rain').textContent = weatherData.rain;
-    
-    // Vêtements
-    container.querySelector('.weather-clothing-text').textContent = weatherData.clothing;
-    
-    // Lien
-    const weatherLink = container.querySelector('.weather-link');
-    if (weatherData.weatherUrl) {
-      weatherLink.href = weatherData.weatherUrl;
-      weatherLink.style.display = 'inline-flex';
-    } else {
-      weatherLink.style.display = 'none';
-    }
-  } else {
-    // Cacher la section météo si pas de données
-    if (weatherSection) {
-      weatherSection.style.display = 'none';
-    }
-  }
             <p class="story-description"></p>
             
             <div class="story-highlights">
@@ -403,6 +346,44 @@ render() {
     if (story.duration) metaParts.push(`${story.duration}h`);
     if (story.cost) metaParts.push(`${story.cost}€`);
     container.querySelector('.story-meta').innerHTML = metaParts.join(' • ');
+
+    // Météo
+  const weatherData = tripData.weatherData && tripData.weatherData[story.city];
+  const weatherSection = container.querySelector('.story-weather');
+  
+  if (weatherData && weatherSection) {
+    // Afficher la section météo
+    weatherSection.style.display = 'block';
+    
+    // Icône
+    container.querySelector('.weather-icon').textContent = weatherData.icon || '🌤️';
+    
+    // Températures
+    container.querySelector('.weather-temp').textContent = `${weatherData.tempMin}-${weatherData.tempMax}°C`;
+    
+    // Conditions
+    container.querySelector('.weather-conditions').textContent = weatherData.conditions;
+    
+    // Précipitations
+    container.querySelector('.weather-rain').textContent = weatherData.rain;
+    
+    // Vêtements
+    container.querySelector('.weather-clothing-text').textContent = weatherData.clothing;
+    
+    // Lien
+    const weatherLink = container.querySelector('.weather-link');
+    if (weatherData.weatherUrl) {
+      weatherLink.href = weatherData.weatherUrl;
+      weatherLink.style.display = 'inline-flex';
+    } else {
+      weatherLink.style.display = 'none';
+    }
+  } else {
+    // Cacher la section météo si pas de données
+    if (weatherSection) {
+      weatherSection.style.display = 'none';
+    }
+  }
     
     // Description
     const descEl = container.querySelector('.story-description');
