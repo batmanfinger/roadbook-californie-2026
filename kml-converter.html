@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KML to JS Converter</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+        }
+        #output {
+            background: #f5f5f5;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+        button {
+            background: #0077BE;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background: #005a8d;
+        }
+        .success {
+            color: green;
+            font-weight: bold;
+        }
+        pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <h1>Convertisseur KML vers JavaScript</h1>
+    <p>Cet outil va convertir votre fichier KML en code JavaScript pour votre carte.</p>
+    
+    <input type="file" id="kmlFile" accept=".kml" />
+    <button onclick="convertKML()">Convertir</button>
+    
+    <div id="output"></div>
+    
+    <script>
+        function simplifyCoordinates(coords, factor = 20) {
+            // Garder 1 point sur X pour simplifier
+            const simplified = [];
+            for (let i = 0; i < coords.length; i += factor) {
+                simplified.push(coords[i]);
+            }
+            // Toujours garder le dernier point
+            if (simplified[simplified.length - 1] !== coords[coords.length - 1]) {
+                simplified.push(coords[coords.length - 1]);
+            }
+            return simplified;
+        }
+        
+        async function convertKML() {
+            const fileInput = document.getElementById('kmlFile');
+            const output = document.getElementById('output');
+            
+            if (!fileInput.files || !fileInput.files[0]) {
+                output.innerHTML = '<p style="color: red;">Veuillez sélectionner un fichier KML.</p>';
+                return;
+            }
+            
+            const file = fileInput.files[0];
+            const text = await file.text();
+            
+            // Parser le XML
+            const parser = new DOMParser();
+            const xmlDoc = parser.parseFromString(text, 'text/xml');
+            
+            // Extraire les routes
+            const placemarks = xmlDoc.getElementsByTagName('Placemark');
+            const routes = {};
+            
+            output.innerHTML = '<p>Traitement en cours...</p>';
+            
+            for (let i = 0; i < placemarks.length; i++) {
+                const placemark = placemarks[i];
+                
+                // Nom
+                const nameElement = placemark.getElementsByTagName('name')[0];
+                const name = nameElement ? nameElement.textContent : `Route ${i + 1}`;
+                
+                // Coordonnées
+                const coordsElement = placemark.getElementsByTagName('coordinates')[0];
+                if (coordsElement) {
+                    const coordsText = coordsElement.textContent.trim();
+                    const coordPairs = coordsText.split(/\s+/).filter(c => c.length > 0);
+                    
+                    const coordinates = coordPairs.map(pair => {
+                        const [lng, lat] = pair.split(',');
+                        return [parseFloat(lat), parseFloat(lng)];
+                    });
+                    
+                    // Simplifier
+                    const simplified = simplifyCoordinates(coordinates, 20);
+                    
+                    const routeName = name.toLowerCase()
+                        .replace(/\s+/g, '_')
+                        .replace(/[àáâã]/g, 'a')
+                        .replace(/[éèêë]/g, 'e')
+                        .replace(/[^a-z0-9_]/g, '');
+                    
+                    routes[routeName] = simplified;
+                    
+                    console.log(`${name}: ${coordinates.length} → ${simplified.length} points`);
+                }
+            }
+            
+            // Générer le code JavaScript
+            let jsCode = `// ==========================================
+// ITINÉRAIRES ROUTIERS (Polylines)
+// ==========================================
+
+const routePolylines = {\n`;
+            
+            const routeKeys = Object.keys(routes);
+            routeKeys.forEach((key, index) => {
+                jsCode += `  '${key}': ${JSON.stringify(routes[key])}`;
+                if (index < routeKeys.length - 1) {
+                    jsCode += ',';
+                }
+                jsCode += '\n';
+            });
+            
+            jsCode += `};
+
+// Fonction pour dessiner les itinéraires routiers
+function drawRoadRoutes() {
+  Object.keys(routePolylines).forEach(routeName => {
+    const polyline = L.polyline(routePolylines[routeName], {
+      color: '#FF6B35',
+      weight: 3,
+      opacity: 0.7
+    }).addTo(map);
+  });
+}`;
+            
+            // Afficher le résultat
+            output.innerHTML = `
+                <p class="success">✓ Conversion réussie ! ${routeKeys.length} route(s) trouvée(s)</p>
+                <button onclick="copyToClipboard()">📋 Copier le code</button>
+                <button onclick="downloadCode()">💾 Télécharger routes_polylines.js</button>
+                <pre id="jsCode">${jsCode}</pre>
+            `;
+            
+            // Stocker le code pour copie/téléchargement
+            window.generatedCode = jsCode;
+        }
+        
+        function copyToClipboard() {
+            navigator.clipboard.writeText(window.generatedCode).then(() => {
+                alert('Code copié dans le presse-papier !');
+            });
+        }
+        
+        function downloadCode() {
+            const blob = new Blob([window.generatedCode], { type: 'text/javascript' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'routes_polylines.js';
+            a.click();
+            URL.revokeObjectURL(url);
+        }
+    </script>
+</body>
+</html>
