@@ -93,35 +93,36 @@ class StoryMode {
               <span class="story-time"></span>
               <span class="story-duration"></span>
             </div>
+            
             <div class="story-weather">
-  <h4><span class="weather-icon"></span> Météo prévue</h4>
-  <div class="weather-grid">
-    <div class="weather-item">
-      <span class="weather-label">Températures</span>
-      <span class="weather-value weather-temp"></span>
-    </div>
-    <div class="weather-item">
-      <span class="weather-label">Conditions</span>
-      <span class="weather-value weather-conditions"></span>
-    </div>
-    <div class="weather-item">
-      <span class="weather-label">Précipitations</span>
-      <span class="weather-value weather-rain"></span>
-    </div>
-  </div>
-  <div class="weather-clothing">
-    👔 <strong>À prévoir :</strong> <span class="weather-clothing-text"></span>
-  </div>
-  <a href="#" class="weather-link" target="_blank">
-    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
-      <polyline points="15 3 21 3 21 9"></polyline>
-      <line x1="10" y1="14" x2="21" y2="3"></line>
-    </svg>
-    Voir prévisions détaillées
-  </a>
-</div>
-*/
+              <h4><span class="weather-icon"></span> Météo prévue</h4>
+              <div class="weather-grid">
+                <div class="weather-item">
+                  <span class="weather-label">Températures</span>
+                  <span class="weather-value weather-temp"></span>
+                </div>
+                <div class="weather-item">
+                  <span class="weather-label">Conditions</span>
+                  <span class="weather-value weather-conditions"></span>
+                </div>
+                <div class="weather-item">
+                  <span class="weather-label">Précipitations</span>
+                  <span class="weather-value weather-rain"></span>
+                </div>
+              </div>
+              <div class="weather-clothing">
+                👔 <strong>À prévoir :</strong> <span class="weather-clothing-text"></span>
+              </div>
+              <a href="#" class="weather-link" target="_blank">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
+                  <polyline points="15 3 21 3 21 9"></polyline>
+                  <line x1="10" y1="14" x2="21" y2="3"></line>
+                </svg>
+                Voir prévisions détaillées
+              </a>
+            </div>
+            
             <p class="story-description"></p>
             
             <div class="story-highlights">
@@ -199,7 +200,7 @@ class StoryMode {
     
     // Click sur la story pour avancer
     container.querySelector('.story-content').addEventListener('click', (e) => {
-      if (!e.target.closest('.story-btn')) {
+      if (!e.target.closest('.story-btn') && !e.target.closest('.weather-link')) {
         this.next();
       }
     });
@@ -272,22 +273,22 @@ class StoryMode {
   
   // Fermer le mode Story
   close() {
-  this.isActive = false;
-  
-  const container = document.getElementById('story-mode');
-  container.classList.add('hidden');
-  document.body.style.overflow = '';
-  
-  if (this.autoplayTimer) {
-    clearTimeout(this.autoplayTimer);
+    this.isActive = false;
+    
+    const container = document.getElementById('story-mode');
+    container.classList.add('hidden');
+    document.body.style.overflow = '';
+    
+    if (this.autoplayTimer) {
+      clearTimeout(this.autoplayTimer);
+    }
+    
+    // Fermer la modal si elle est ouverte
+    const modal = document.getElementById('place-modal');
+    if (modal && !modal.classList.contains('hidden')) {
+      modal.classList.add('hidden');
+    }
   }
-  
-  // Fermer la modal si elle est ouverte
-  const modal = document.getElementById('place-modal');
-  if (modal && !modal.classList.contains('hidden')) {
-    modal.classList.add('hidden');
-  }
-}
   
   // Aller à la story suivante
   next() {
@@ -346,44 +347,44 @@ class StoryMode {
     if (story.duration) metaParts.push(`${story.duration}h`);
     if (story.cost) metaParts.push(`${story.cost}€`);
     container.querySelector('.story-meta').innerHTML = metaParts.join(' • ');
-
+    
     // Météo
-  const weatherData = tripData.weatherData && tripData.weatherData[story.city];
-  const weatherSection = container.querySelector('.story-weather');
-  
-  if (weatherData && weatherSection) {
-    // Afficher la section météo
-    weatherSection.style.display = 'block';
+    const weatherData = tripData.weatherData && tripData.weatherData[story.city];
+    const weatherSection = container.querySelector('.story-weather');
     
-    // Icône
-    container.querySelector('.weather-icon').textContent = weatherData.icon || '🌤️';
-    
-    // Températures
-    container.querySelector('.weather-temp').textContent = `${weatherData.tempMin}-${weatherData.tempMax}°C`;
-    
-    // Conditions
-    container.querySelector('.weather-conditions').textContent = weatherData.conditions;
-    
-    // Précipitations
-    container.querySelector('.weather-rain').textContent = weatherData.rain;
-    
-    // Vêtements
-    container.querySelector('.weather-clothing-text').textContent = weatherData.clothing;
-    
-    // Lien
-    const weatherLink = container.querySelector('.weather-link');
-    if (weatherData.weatherUrl) {
-      weatherLink.href = weatherData.weatherUrl;
-      weatherLink.style.display = 'inline-flex';
+    if (weatherData && weatherSection) {
+      // Afficher la section météo
+      weatherSection.style.display = 'block';
+      
+      // Icône
+      container.querySelector('.weather-icon').textContent = weatherData.icon || '🌤️';
+      
+      // Températures
+      container.querySelector('.weather-temp').textContent = `${weatherData.tempMin}-${weatherData.tempMax}°C`;
+      
+      // Conditions
+      container.querySelector('.weather-conditions').textContent = weatherData.conditions;
+      
+      // Précipitations
+      container.querySelector('.weather-rain').textContent = weatherData.rain;
+      
+      // Vêtements
+      container.querySelector('.weather-clothing-text').textContent = weatherData.clothing;
+      
+      // Lien
+      const weatherLink = container.querySelector('.weather-link');
+      if (weatherData.weatherUrl) {
+        weatherLink.href = weatherData.weatherUrl;
+        weatherLink.style.display = 'inline-flex';
+      } else {
+        weatherLink.style.display = 'none';
+      }
     } else {
-      weatherLink.style.display = 'none';
+      // Cacher la section météo si pas de données
+      if (weatherSection) {
+        weatherSection.style.display = 'none';
+      }
     }
-  } else {
-    // Cacher la section météo si pas de données
-    if (weatherSection) {
-      weatherSection.style.display = 'none';
-    }
-  }
     
     // Description
     const descEl = container.querySelector('.story-description');

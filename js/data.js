@@ -886,5 +886,4 @@ const tripData = {
       weatherUrl: "https://weather.com/weather/tenday/l/Monterey+CA"
     }
   }
-
 };
