@@ -243,16 +243,22 @@ class StoryMode {
   
   // Fermer le mode Story
   close() {
-    this.isActive = false;
-    
-    const container = document.getElementById('story-mode');
-    container.classList.add('hidden');
-    document.body.style.overflow = '';
-    
-    if (this.autoplayTimer) {
-      clearTimeout(this.autoplayTimer);
-    }
+  this.isActive = false;
+  
+  const container = document.getElementById('story-mode');
+  container.classList.add('hidden');
+  document.body.style.overflow = '';
+  
+  if (this.autoplayTimer) {
+    clearTimeout(this.autoplayTimer);
   }
+  
+  // Fermer la modal si elle est ouverte
+  const modal = document.getElementById('place-modal');
+  if (modal && !modal.classList.contains('hidden')) {
+    modal.classList.add('hidden');
+  }
+}
   
   // Aller à la story suivante
   next() {

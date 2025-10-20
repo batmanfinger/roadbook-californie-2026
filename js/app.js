@@ -298,7 +298,7 @@ function setupActivityListeners() {
       const activityName = activityElement.dataset.activityName;
       if (activityName) {
         // Ouvrir la modal classique par défaut
-        openPlaceModal(activityName);
+        //openPlaceModal(activityName);
         
         // Alternative : Décommenter pour ouvrir le Story Mode à la place
          if (typeof openStoryFromActivity === 'function') {
