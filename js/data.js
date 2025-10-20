@@ -782,4 +782,109 @@ const tripData = {
       booking: "Arrivée confirmée"
     }
   }
+
+   // Données météo par ville pour février-mars
+  weatherData: {
+    "San Francisco": {
+      tempMin: 10,
+      tempMax: 17,
+      conditions: "Partiellement nuageux",
+      rain: "Pluie possible (30%)",
+      clothing: "Veste imperméable, pull, couches",
+      icon: "🌤️",
+      weatherUrl: "https://weather.com/weather/tenday/l/San+Francisco+CA"
+    },
+    "Monterey": {
+      tempMin: 8,
+      tempMax: 17,
+      conditions: "Doux et ensoleillé",
+      rain: "Peu de pluie (20%)",
+      clothing: "Pull léger, veste pour le soir",
+      icon: "☀️",
+      weatherUrl: "https://weather.com/weather/tenday/l/Monterey+CA"
+    },
+    "Monterey / Carmel": {
+      tempMin: 8,
+      tempMax: 17,
+      conditions: "Doux et ensoleillé",
+      rain: "Peu de pluie (20%)",
+      clothing: "Pull léger, veste pour le soir",
+      icon: "☀️",
+      weatherUrl: "https://weather.com/weather/tenday/l/Carmel+CA"
+    },
+    "Santa Barbara": {
+      tempMin: 9,
+      tempMax: 20,
+      conditions: "Ensoleillé et agréable",
+      rain: "Très peu de pluie (10%)",
+      clothing: "T-shirt + pull léger, lunettes soleil",
+      icon: "☀️",
+      weatherUrl: "https://weather.com/weather/tenday/l/Santa+Barbara+CA"
+    },
+    "Los Angeles": {
+      tempMin: 11,
+      tempMax: 21,
+      conditions: "Ensoleillé, temps idéal",
+      rain: "Rare (5%)",
+      clothing: "Vêtements légers, crème solaire",
+      icon: "☀️",
+      weatherUrl: "https://weather.com/weather/tenday/l/Los+Angeles+CA"
+    },
+    "Los Angeles / Malibu": {
+      tempMin: 11,
+      tempMax: 21,
+      conditions: "Ensoleillé, temps idéal",
+      rain: "Rare (5%)",
+      clothing: "Vêtements légers, crème solaire",
+      icon: "☀️",
+      weatherUrl: "https://weather.com/weather/tenday/l/Malibu+CA"
+    },
+    "San Diego": {
+      tempMin: 12,
+      tempMax: 19,
+      conditions: "Ensoleillé et chaud",
+      rain: "Quasiment aucune (5%)",
+      clothing: "Shorts, t-shirts, maillot de bain",
+      icon: "☀️",
+      weatherUrl: "https://weather.com/weather/tenday/l/San+Diego+CA"
+    },
+    // Pour les jours de transition
+    "Monterey → Santa Barbara": {
+      tempMin: 9,
+      tempMax: 17,
+      conditions: "Variable selon les zones",
+      rain: "Faible (15%)",
+      clothing: "Couches, adaptable",
+      icon: "🌤️",
+      weatherUrl: "https://weather.com/weather/tenday/l/Santa+Barbara+CA"
+    },
+    "Santa Barbara → Los Angeles": {
+      tempMin: 10,
+      tempMax: 21,
+      conditions: "Ensoleillé",
+      rain: "Faible (10%)",
+      clothing: "Léger, lunettes de soleil",
+      icon: "☀️",
+      weatherUrl: "https://weather.com/weather/tenday/l/Los+Angeles+CA"
+    },
+    "Los Angeles → San Diego": {
+      tempMin: 11,
+      tempMax: 19,
+      conditions: "Ensoleillé",
+      rain: "Très faible (5%)",
+      clothing: "Léger et confortable",
+      icon: "☀️",
+      weatherUrl: "https://weather.com/weather/tenday/l/San+Diego+CA"
+    },
+    "San Francisco → Monterey": {
+      tempMin: 9,
+      tempMax: 17,
+      conditions: "Variable",
+      rain: "Possible (30%)",
+      clothing: "Veste + couches",
+      icon: "🌤️",
+      weatherUrl: "https://weather.com/weather/tenday/l/Monterey+CA"
+    }
+  }
+
 };

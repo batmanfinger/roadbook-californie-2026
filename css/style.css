@@ -960,6 +960,86 @@ body {
     right: 20px;
 }
 
+/* Section météo dans le story mode */
+.story-weather {
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.story-weather h4 {
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 15px;
+    opacity: 0.8;
+    font-weight: var(--font-weight-medium);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.weather-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    margin-bottom: 15px;
+}
+
+.weather-item {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.weather-label {
+    font-size: 0.75rem;
+    opacity: 0.7;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.weather-value {
+    font-size: 1rem;
+    font-weight: var(--font-weight-medium);
+}
+
+.weather-clothing {
+    font-size: 0.9rem;
+    padding: 12px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 8px;
+    margin-bottom: 12px;
+    line-height: 1.5;
+}
+
+.weather-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: rgba(255,255,255,0.9);
+    font-size: 0.85rem;
+    text-decoration: none;
+    padding: 8px 16px;
+    background: rgba(255,255,255,0.1);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 20px;
+    transition: all 0.2s ease;
+}
+
+.weather-link:hover {
+    background: rgba(255,255,255,0.2);
+    border-color: rgba(255,255,255,0.4);
+}
+
+.weather-link svg {
+    width: 16px;
+    height: 16px;
+}
+
 /* Responsive Story Mode */
 @media (max-width: 768px) {
     .story-overlay {
@@ -1009,6 +1089,21 @@ body {
         right: 10px;
     }
 }
+
+/* Responsive météo */
+@media (max-width: 768px) {
+    .story-weather {
+        padding: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .weather-grid {
+        gap: 10px;
+    }
+    
+    .weather-value {
+        font-size: 0.95rem;
+    }
 
 @media (max-width: 768px) {
     /* Hero */
