@@ -215,7 +215,6 @@ class ExplorerMode {
       <div class="explorer-overlay">
         <div class="explorer-info">
           <div class="explorer-place-header">
-            <span class="explorer-icon">${mission.icon}</span>
             <h2 class="explorer-place-title">${place.name}</h2>
             <span class="explorer-badge ${isCompleted ? 'earned' : ''}">
               ${isCompleted ? '⭐' : '🔒'} ${mission.badge}
