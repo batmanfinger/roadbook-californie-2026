@@ -1969,7 +1969,7 @@ body {
     font-family: inherit;
     font-size: 1rem;
     font-weight: var(--font-weight-light);
-    color: var(--color-dark-gray);
+    color: white;
     resize: vertical;
     transition: border-color 0.2s ease;
 }
