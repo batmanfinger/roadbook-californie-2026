@@ -1873,8 +1873,9 @@ body {
 }
 
 .question-box {
-    background: var(--color-white);
-    border: 1px solid var(--color-border);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
     padding: 20px;
     margin-bottom: 15px;
 }
@@ -1882,16 +1883,15 @@ body {
 .question-box p {
     margin: 0 0 15px 0;
     font-weight: var(--font-weight-medium);
-    color: var(--color-black);
+    font-size: 1.1rem;
     line-height: 1.6;
 }
 
 .answer-box {
-    background: var(--color-bg-light);
-    border-left: 3px solid var(--color-accent);
+    background: rgba(76,175,80,0.2);
+    border-left: 3px solid #4caf50;
     padding: 15px;
     font-weight: var(--font-weight-regular);
-    color: var(--color-dark-gray);
 }
 
 /* During section - Checklist */
@@ -2278,26 +2278,25 @@ body {
 }
 
 .question-box {
-    background: #e3f2fd;
-    border-left: 4px solid #2196f3;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
+    padding: 20px;
+    margin-bottom: 15px;
 }
 
 .question-box p {
-    margin: 0 0 10px 0;
+    margin: 0 0 15px 0;
     font-weight: var(--font-weight-medium);
-    color: #1976d2;
+    font-size: 1.1rem;
+    line-height: 1.6;
 }
 
 .answer-box {
-    background: #f1f8e9;
-    border: 2px solid #8bc34a;
-    padding: 12px;
-    border-radius: 8px;
-    font-weight: var(--font-weight-medium);
-    color: #558b2f;
+    background: rgba(76,175,80,0.2);
+    border-left: 3px solid #4caf50;
+    padding: 15px;
+    font-weight: var(--font-weight-regular);
 }
 
 /* During section - Checklist */
