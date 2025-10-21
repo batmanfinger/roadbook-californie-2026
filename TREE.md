@@ -1,7 +1,7 @@
 ```
 roadbook-californie-2026/
 ├─ css/
-│  └─ style.css
+│  └─ style.css  — Styles CSS (mise en forme, responsive).
 ├─ images/
 │  ├─ places/
 │  │  ├─ 17-mile-drive.jpg
@@ -42,24 +42,24 @@ roadbook-californie-2026/
 │  │  ├─ sausalito.jpg
 │  │  ├─ stearns-wharf.jpg
 │  │  └─ venice-beach-boardwalk.jpg
-│  └─ README.md
+│  └─ README.md  — Documentation Markdown.
 ├─ js/
-│  ├─ app.js  — Point d’entrée: état global, initialisation UI, routing interne.
-│  ├─ data.js  — Données d’itinéraire (jours, activités) consommées par l’app.
-│  ├─ explorer-data.js  — Données du “Carnet de l’explorateur”.
-│  ├─ explorer-mode.js  — Logique du mode explorateur (interactions, progression).
-│  ├─ map.js  — Carte Leaflet: marqueurs, couches, polylignes, interactions.
-│  └─ story-mode.js  — UI du mode story (narration, transitions).
+│  ├─ app.js  — Point d’entrée: état global, init UI, routing interne.
+│  ├─ data.js  — Données d’itinéraire (jours, activités).
+│  ├─ explorer-data.js  — Données du Carnet de l’explorateur.
+│  ├─ explorer-mode.js  — Logique du mode explorateur (progression).
+│  ├─ map.js  — Carte Leaflet: marqueurs, couches, itinéraires.
+│  └─ story-mode.js  — UI story (narration, transitions).
 ├─ California 2026.kml
-├─ README.md
-├─ STORY_MODE.md
-├─ TREE.md
-├─ index.html
-├─ kml-converter.html
-├─ manifest.json
+├─ index.html  — Entrée principale de l’app (shell PWA).
+├─ kml-converter.html  — Document HTML (structure de page).
+├─ manifest.json  — Web App Manifest (icônes, nom, thème).
 ├─ parse_kml.py
-├─ placeDetails_additions.txt
-├─ placeDetails_manquants.js
-├─ routes_polylines.js
-└─ service-worker.js
+├─ placeDetails_additions.txt  — Texte brut.
+├─ placeDetails_manquants.js  — Module JavaScript (logique d’interface / app).
+├─ README.md  — Documentation Markdown.
+├─ routes_polylines.js  — Module JavaScript (logique d’interface / app).
+├─ service-worker.js  — Service Worker (cache offline PWA).
+├─ STORY_MODE.md  — Documentation Markdown.
+└─ TREE.md  — Documentation Markdown.
 ```
