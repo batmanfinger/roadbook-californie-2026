@@ -1629,7 +1629,7 @@ body {
 }
 
 .explorer-prev {
-    left: 20px !important;
+    left: 40px !important;
     right: auto !important;
 }
 
@@ -1858,16 +1858,17 @@ body {
 
 /* Before section */
 .fun-fact {
-    background: var(--color-bg-light);
-    border-left: 3px solid var(--color-accent);
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(10px);
+    border-left: 3px solid rgba(255,255,255,0.5);
     padding: 20px;
     margin-bottom: 20px;
     line-height: 1.7;
-    font-weight: var(--font-weight-light);
+    color: white !important;
 }
 
 .fun-fact strong {
-    color: var(--color-accent);
+    color: #fff !important;
     font-weight: var(--font-weight-semibold);
 }
 
