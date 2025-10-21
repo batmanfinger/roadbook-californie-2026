@@ -1761,7 +1761,7 @@ body {
     flex: 1;
     overflow-y: auto;
     padding: 40px 20px;
-    background: var(--color-bg-light);
+    background: transparent;
 }
 
 .explorer-container {
