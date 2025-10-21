@@ -1245,6 +1245,16 @@ body {
     }
 }
 
+@media (max-width: 450px) {
+    .hero-buttons {
+        margin-top: 20px;
+    }
+
+    .hero-story-btn {
+        margin-top: 15px;
+    }
+}
+
 /* ==========================================
    CARNET D'EXPLORATEUR - MODE IMMERSIF
    À ajouter à la fin de style.css
