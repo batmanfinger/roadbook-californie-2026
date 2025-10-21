@@ -1,6 +1,5 @@
 name: Update TREE.md
 
-# Autorise le bot à pousser sur le dépôt
 permissions:
   contents: write
 
@@ -19,65 +18,132 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Generate TREE.md (nested, pretty)
+      - name: Generate TREE.md (nested, pretty, with auto descriptions)
         run: |
           python3 - <<'PY'
           import os
+          from pathlib import Path
 
-          ROOT = os.getcwd()
-          repo_name = os.path.basename(ROOT.rstrip(os.sep)) + "/"
+          ROOT = Path(os.getcwd())
+          repo_name = ROOT.name + "/"
 
-          # Exclusions de base
           EXCLUDE_DIRS = {".git", ".github", "node_modules", "__pycache__", ".venv", ".idea"}
           EXCLUDE_FILES = {".DS_Store"}
 
-          # Descriptions pour js/
-          DESCRIPTIONS = {
-            "app.js": "Point d’entrée: état global, initialisation UI, routing interne.",
-            "data.js": "Données d’itinéraire (jours, activités) consommées par l’app.",
-            "explorer-data.js": "Données du “Carnet de l’explorateur”.",
-            "explorer-mode.js": "Logique du mode explorateur (interactions, progression).",
-            "map.js": "Carte Leaflet: marqueurs, couches, polylignes, interactions.",
-            "story-mode.js": "UI du mode story (narration, transitions).",
+          # Extensions d'images à EXCLURE des descriptions
+          IMAGE_EXTS = {".png", ".jpg", ".jpeg", ".webp", ".gif", ".svg", ".ico", ".bmp", ".tiff", ".avif"}
+
+          # Règles génériques par extension
+          EXT_RULES = {
+            ".html": "Document HTML (structure de page).",
+            ".htm": "Document HTML (structure de page).",
+            ".css": "Styles CSS (mise en forme, responsive).",
+            ".js": "Module JavaScript (logique d’interface / app).",
+            ".mjs": "Module JavaScript ES (import/export).",
+            ".json": "Données/Configuration JSON.",
+            ".md": "Documentation Markdown.",
+            ".yml": "Configuration YAML.",
+            ".yaml": "Configuration YAML.",
+            ".geojson": "Données géo (GeoJSON).",
+            ".csv": "Données tabulaires CSV.",
+            ".map": "Source map (debug).",
+            ".txt": "Texte brut.",
+            ".xml": "Fichier XML.",
+            ".ts": "TypeScript (non compilé côté repo).",
+            ".woff": "Police web (WOFF).",
+            ".woff2": "Police web (WOFF2).",
+            ".ttf": "Police TrueType.",
+            ".mp3": "Audio (MP3).",
+            ".wav": "Audio (WAV).",
+            ".mp4": "Vidéo (MP4).",
+            ".webm": "Vidéo (WebM).",
+            ".pdf": "Document PDF.",
+            ".ico": "Favicon."
           }
+
+          # Règles spécifiques par nom de fichier
+          NAME_RULES = {
+            "index.html": "Entrée principale de l’app (shell PWA).",
+            "app.html": "Vue/app HTML.",
+            "app.js": "Point d’entrée: état global, init UI, routing interne.",
+            "data.js": "Données d’itinéraire (jours, activités).",
+            "explorer-data.js": "Données du Carnet de l’explorateur.",
+            "explorer-mode.js": "Logique du mode explorateur (progression).",
+            "map.js": "Carte Leaflet: marqueurs, couches, itinéraires.",
+            "story-mode.js": "UI story (narration, transitions).",
+            "service-worker.js": "Service Worker (cache offline PWA).",
+            "sw.js": "Service Worker (cache offline PWA).",
+            "manifest.json": "Web App Manifest (icônes, nom, thème).",
+            "robots.txt": "Crawl directives pour moteurs de recherche.",
+            "sitemap.xml": "Plan du site pour SEO.",
+            "CNAME": "Custom domain GitHub Pages."
+          }
+
+          def describe_file(path: Path) -> str:
+            name = path.name
+            ext = path.suffix.lower()
+
+            # Pas de description pour les images
+            if ext in IMAGE_EXTS:
+              return ""
+
+            # Spécifique d'abord
+            if name in NAME_RULES:
+              return NAME_RULES[name]
+
+            # Heuristiques de dossiers (améliore la pertinence)
+            parts = [p.lower() for p in path.parts]
+            if "js" in parts and ext in {".js", ".mjs"} and name.endswith(".js"):
+              # Quelques mots-clés fréquents
+              if any(k in name for k in ["app", "main", "core"]):
+                return "Module cœur de l’app."
+              if "map" in name:
+                return "Module carte/Leaflet."
+              if "story" in name:
+                return "Module story/narration."
+              if "explorer" in name:
+                return "Module Carnet de l’explorateur."
+              if "utils" in name or "helper" in name:
+                return "Utilitaires/Helpers JS."
+              # fallback
+              return EXT_RULES.get(ext, "").replace("Module", "Script")
+
+            # Règle générique par extension
+            return EXT_RULES.get(ext, "")
 
           lines = []
 
-          def listdir_sorted(path):
+          def listdir_sorted(d: Path):
             try:
-              entries = os.listdir(path)
+              entries = [e for e in d.iterdir() if e.name not in EXCLUDE_FILES and not e.name.startswith(".")]
             except FileNotFoundError:
               return [], []
-            dirs = sorted([e for e in entries if os.path.isdir(os.path.join(path, e))])
-            files = sorted([e for e in entries if os.path.isfile(os.path.join(path, e))])
+            dirs = sorted([e for e in entries if e.is_dir() and e.name not in EXCLUDE_DIRS], key=lambda p: p.name.lower())
+            files = sorted([e for e in entries if e.is_file()], key=lambda p: p.name.lower())
             return dirs, files
 
-          def build_tree(path, prefix=""):
+          def build_tree(path: Path, prefix: str = ""):
             dirs, files = listdir_sorted(path)
-            # Filtrages
-            dirs = [d for d in dirs if d not in EXCLUDE_DIRS and not d.startswith(".")]
-            files = [f for f in files if f not in EXCLUDE_FILES and not f.startswith(".")]
-
             entries = [(d, True) for d in dirs] + [(f, False) for f in files]
-            for idx, (name, is_dir) in enumerate(entries):
+
+            for idx, (p, is_dir) in enumerate(entries):
               is_last = (idx == len(entries) - 1)
               connector = "└─ " if is_last else "├─ "
               if is_dir:
-                lines.append(f"{prefix}{connector}{name}/")
+                lines.append(f"{prefix}{connector}{p.name}/")
                 new_prefix = f"{prefix}{'   ' if is_last else '│  '}"
-                build_tree(os.path.join(path, name), new_prefix)
+                build_tree(p, new_prefix)
               else:
-                desc = ""
-                if os.path.basename(path) == "js" and name in DESCRIPTIONS:
-                  desc = f"  — {DESCRIPTIONS[name]}"
-                lines.append(f"{prefix}{connector}{name}{desc}")
+                desc = describe_file(p)
+                suffix = f"  — {desc}" if desc else ""
+                lines.append(f"{prefix}{connector}{p.name}{suffix}")
 
-          # Génère l'arbo
+          # Génère
           lines.append(f"{repo_name}")
           build_tree(ROOT)
 
-          # Écrit le fichier
-          with open("TREE.md", "w", encoding="utf-8") as f:
+          # Écrit
+          with open(ROOT / "TREE.md", "w", encoding="utf-8") as f:
             f.write("```\n")
             for l in lines:
               f.write(l + "\n")
@@ -92,6 +158,6 @@ jobs:
             git config user.name "github-actions[bot]"
             git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
             git add TREE.md
-            git commit -m "chore: auto-update TREE.md [skip ci]"
+            git commit -m "chore: auto-update TREE.md (auto descriptions) [skip ci]"
             git push
           fi
