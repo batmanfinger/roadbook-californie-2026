@@ -57,7 +57,6 @@ class ExplorerMode {
       
       <div class="explorer-header">
         <div class="explorer-title">
-          <span style="font-size: 1.5rem;">🎒</span>
           <h2>Mon Carnet d'Explorateur</h2>
         </div>
         <div class="explorer-counter">
