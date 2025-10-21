@@ -1598,7 +1598,7 @@ body {
 
 /* Navigation */
 .explorer-nav {
-    position: absolute;
+    position: fixed;
     top: 50%;
     transform: translateY(-50%);
     background: rgba(255,255,255,0.1);
