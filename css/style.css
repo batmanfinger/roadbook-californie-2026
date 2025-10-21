@@ -1646,26 +1646,32 @@ body {
     .explorer-overlay {
         padding: 80px 60px 20px 60px;
     }
-    
+
     .explorer-place-title {
         font-size: 1.8rem;
     }
-    
+
     .explorer-icon {
         font-size: 3rem;
     }
-    
+
     .explorer-nav {
         width: 40px;
         height: 40px;
     }
-    
+
     .explorer-prev {
         left: 10px;
     }
-    
+
     .explorer-next {
         right: 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    .explorer-counter {
+        display: none;
     }
 }
 
