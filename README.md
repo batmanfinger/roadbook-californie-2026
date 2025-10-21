@@ -2,67 +2,12 @@
 
 Roadbook interactif pour notre roadtrip familial en Californie - Février 2026
 
-## 🚀 Déploiement sur GitHub Pages
+## Structure du dépôt
 
-### Étape 1 : Créer le repository
+Consulte la vue d’ensemble ici → [TREE.md](./TREE.md)
 
-1. Allez sur [github.com](https://github.com)
-2. Cliquez sur **"New repository"**
-3. Nom : `roadbook-californie-2026` (ou votre choix)
-4. Visibilité : **Public**
-5. Cochez **"Add a README file"**
-6. Cliquez sur **"Create repository"**
+Ce fichier est régénéré automatiquement à chaque push sur `main` par GitHub Actions.
 
-### Étape 2 : Structure des fichiers
-
-Créez cette structure dans votre repo :
-
-```
-roadbook-californie-2026/
-├── index.html
-├── css/
-│   └── style.css
-├── js/
-│   ├── data.js
-│   └── app.js
-└── README.md
-```
-
-**Sur GitHub :**
-1. Cliquez sur **"Add file"** → **"Create new file"**
-2. Pour créer un dossier, tapez `css/style.css` (le dossier se crée automatiquement)
-3. Collez le contenu correspondant
-4. Cliquez **"Commit changes"**
-5. Répétez pour tous les fichiers
-
-### Étape 3 : Activer GitHub Pages
-
-1. Dans votre repo, allez dans **Settings**
-2. Dans le menu gauche, cliquez sur **Pages**
-3. Sous "Source", sélectionnez :
-   - Branch : **main**
-   - Folder : **/ (root)**
-4. Cliquez sur **Save**
-5. Attendez 1-2 minutes
-
-**Votre site sera accessible à :**
-```
-https://[votre-username].github.io/roadbook-californie-2026/
-```
-
-## 📁 Fichiers à créer
-
-### 1. `index.html`
-Copiez le contenu de l'artifact "index.html"
-
-### 2. `css/style.css`
-Copiez le contenu de l'artifact "css/style.css"
-
-### 3. `js/data.js`
-Copiez le contenu de l'artifact "js/data.js"
-
-### 4. `js/app.js`
-Copiez le contenu de l'artifact "js/app.js"
 
 ## 🎨 Personnalisation
 
