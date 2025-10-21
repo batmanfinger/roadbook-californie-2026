@@ -1275,7 +1275,7 @@ body {
     display: flex;
     gap: 4px;
     padding: 10px;
-    z-index: 10;
+    z-index: 20;
     background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
 }
 
@@ -1297,7 +1297,7 @@ body {
 
 /* Header */
 .explorer-header {
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -2106,7 +2106,7 @@ body {
 
 /* Header du carnet */
 .explorer-header {
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
