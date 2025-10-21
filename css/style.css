@@ -1306,7 +1306,7 @@ body {
     align-items: center;
     padding: 25px 20px;
     z-index: 10;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    background: transparent;
 }
 
 .explorer-title {
@@ -1374,12 +1374,13 @@ body {
 }
 
 .explorer-bg {
-    position: absolute;
+    position: fixed;
     inset: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     filter: brightness(0.6);
+    z-index: -1;
 }
 
 .explorer-overlay {
@@ -2105,11 +2106,15 @@ body {
 
 /* Header du carnet */
 .explorer-header {
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 25px 20px;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.4) 0%, rgba(0,0,0,0.2) 50%, transparent 100%);
-    backdrop-filter: blur(5px);
+    background: transparent;
+    backdrop-filter: none;
     border-bottom: none;
+    z-index: 10;
 }
 
 .explorer-header-content {
