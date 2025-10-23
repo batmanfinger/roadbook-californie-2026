@@ -1245,6 +1245,16 @@ body {
     }
 }
 
+@media (max-width: 450px) {
+    .hero-buttons {
+        margin-top: 20px;
+    }
+
+    .hero-story-btn {
+        margin-top: 15px;
+    }
+}
+
 /* ==========================================
    CARNET D'EXPLORATEUR - MODE IMMERSIF
    À ajouter à la fin de style.css
@@ -1275,7 +1285,7 @@ body {
     display: flex;
     gap: 4px;
     padding: 10px;
-    z-index: 10;
+    z-index: 20;
     background: linear-gradient(to bottom, rgba(0,0,0,0.5), transparent);
 }
 
@@ -1297,7 +1307,7 @@ body {
 
 /* Header */
 .explorer-header {
-    position: absolute;
+    position: sticky;
     top: 0;
     left: 0;
     right: 0;
@@ -1306,7 +1316,7 @@ body {
     align-items: center;
     padding: 25px 20px;
     z-index: 10;
-    background: linear-gradient(to bottom, rgba(0,0,0,0.6), transparent);
+    background: transparent;
 }
 
 .explorer-title {
@@ -1328,6 +1338,7 @@ body {
     font-size: 0.9rem;
     font-weight: var(--font-weight-medium);
     letter-spacing: 1px;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 
 .explorer-close {
@@ -1373,12 +1384,13 @@ body {
 }
 
 .explorer-bg {
-    position: absolute;
+    position: fixed;
     inset: 0;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     filter: brightness(0.6);
+    z-index: -1;
 }
 
 .explorer-overlay {
@@ -1452,6 +1464,7 @@ body {
     letter-spacing: 1.5px;
     margin-bottom: 20px;
     opacity: 0.9;
+    color: white;
 }
 
 /* Before section */
@@ -1643,26 +1656,32 @@ body {
     .explorer-overlay {
         padding: 80px 60px 20px 60px;
     }
-    
+
     .explorer-place-title {
         font-size: 1.8rem;
     }
-    
+
     .explorer-icon {
         font-size: 3rem;
     }
-    
+
     .explorer-nav {
         width: 40px;
         height: 40px;
     }
-    
+
     .explorer-prev {
         left: 10px;
     }
-    
+
     .explorer-next {
         right: 10px;
+    }
+}
+
+@media (max-width: 450px) {
+    .explorer-counter {
+        display: none;
     }
 }
 
@@ -1759,7 +1778,7 @@ body {
     flex: 1;
     overflow-y: auto;
     padding: 40px 20px;
-    background: var(--color-bg-light);
+    background: transparent;
 }
 
 .explorer-container {
@@ -1846,7 +1865,7 @@ body {
     gap: 10px;
     font-size: 1.2rem;
     font-weight: var(--font-weight-medium);
-    color: var(--color-black);
+    color: white;
     margin-bottom: 20px;
     text-transform: uppercase;
     letter-spacing: 1px;
@@ -2104,11 +2123,18 @@ body {
 
 /* Header du carnet */
 .explorer-header {
-    position: relative;
+    position: sticky;
+    top: 0;
+    left: 0;
+    right: 0;
     padding: 25px 20px;
-    background: rgba(0,0,0,0.2);
+    background: rgba(255,255,255,0.1);
     backdrop-filter: blur(10px);
-    border-bottom: 2px solid rgba(255,255,255,0.2);
+    border: 1px solid rgba(255,255,255,0.2);
+    border-left: none;
+    border-right: none;
+    border-top: none;
+    z-index: 10;
 }
 
 .explorer-header-content {
@@ -2130,6 +2156,7 @@ body {
     font-size: 1.5rem;
     font-weight: var(--font-weight-medium);
     margin: 0;
+    color: white;
 }
 
 .explorer-progress {
@@ -2138,6 +2165,7 @@ body {
     gap: 10px;
     color: rgba(255,255,255,0.9);
     font-size: 0.9rem;
+    text-shadow: 0 1px 4px rgba(0,0,0,0.6);
 }
 
 .progress-badge {
@@ -2253,7 +2281,7 @@ body {
     gap: 8px;
     font-size: 1.1rem;
     font-weight: var(--font-weight-semibold);
-    color: var(--color-black);
+    color: white;
     margin-bottom: 15px;
 }
 
