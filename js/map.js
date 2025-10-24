@@ -51,7 +51,7 @@ function initMap() {
   });
 
   // Dessiner l'itinéraire
-  drawRoadRoutes()();
+  drawRoadRoutes();
 
   // Ajouter les marqueurs des étapes
   addStopMarkers();
