@@ -64,7 +64,7 @@ function initMap() {
 // TRACÉ DE L'ITINÉRAIRE
 // ==========================================
 
-function drawRoute() {
+function  drawRoadRoutes() {
   const routeCoords = mainStops.map(stop => [stop.lat, stop.lng]);
   
   routeLine = L.polyline(routeCoords, {
