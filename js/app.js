@@ -29,22 +29,65 @@ if ('serviceWorker' in navigator) {
 // ==========================================
 
 document.addEventListener('DOMContentLoaded', () => {
-  renderDays();
-  setupEventListeners();
-  
-  // S'assurer que la section map est visible avant d'initialiser
-  const mapElement = document.getElementById('map');
-  if (mapElement) {
-    mapElement.classList.add('open');
-  }
-  
-  // Initialiser la carte après un court délai
-  setTimeout(() => {
-    if (typeof initMap === 'function') {
-      initMap();
+  // Afficher un loader pendant le chargement du Google Sheet
+  showLoadingScreen();
+
+  loadTripData().then(() => {
+    hideLoadingScreen();
+    renderDays();
+    setupEventListeners();
+
+    // S'assurer que la section map est visible avant d'initialiser
+    const mapElement = document.getElementById('map');
+    if (mapElement) {
+      mapElement.classList.add('open');
     }
-  }, 500);
+
+    // Initialiser la carte après un court délai
+    setTimeout(() => {
+      if (typeof initMap === 'function') {
+        initMap();
+      }
+    }, 500);
+  });
 });
+
+// ==========================================
+// LOADER
+// ==========================================
+
+function showLoadingScreen() {
+  const loader = document.createElement('div');
+  loader.id = 'loading-screen';
+  loader.style.cssText = `
+    position:fixed; inset:0; background:#0a1628;
+    display:flex; flex-direction:column;
+    align-items:center; justify-content:center;
+    z-index:9999; color:white; font-family:sans-serif;
+  `;
+  loader.innerHTML = `
+    <div style="font-size:3rem; margin-bottom:1rem; animation: pulse 1.5s ease-in-out infinite;">🌴</div>
+    <div style="font-size:1.1rem; margin-bottom:1.5rem; color:#a0c4ff;">Chargement du roadbook...</div>
+    <div style="width:200px; height:4px; background:#1a3a5c; border-radius:2px; overflow:hidden;">
+      <div style="height:100%; width:0%; background:#4a9eff; border-radius:2px;
+        animation: loadbar 2s ease-in-out infinite;"></div>
+    </div>
+    <style>
+      @keyframes loadbar { 0%{width:0%} 60%{width:85%} 100%{width:100%} }
+      @keyframes pulse { 0%,100%{transform:scale(1)} 50%{transform:scale(1.15)} }
+    </style>
+  `;
+  document.body.appendChild(loader);
+}
+
+function hideLoadingScreen() {
+  const loader = document.getElementById('loading-screen');
+  if (loader) {
+    loader.style.transition = 'opacity 0.4s ease';
+    loader.style.opacity = '0';
+    setTimeout(() => loader.remove(), 400);
+  }
+}
 
 // ==========================================
 // RENDU DES JOURS
