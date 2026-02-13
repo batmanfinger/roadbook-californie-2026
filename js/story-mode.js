@@ -35,7 +35,7 @@ class StoryMode {
             const imageFileName = activity.name.toLowerCase()
               .replace(/\s+/g, '-')
               .replace(/[^a-z0-9-]/g, '');
-            const imageUrl = details.image || `images/places/${imageFileName}.jpg`;
+            const imageUrl = details.imageUrl || details.image || `images/places/${imageFileName}.jpg`;
             
             this.stories.push({
               day: day.day,
