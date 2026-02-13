@@ -8,6 +8,10 @@ let state = {
   openDayDetails: null
 };
 
+// Instances des modes immersifs (initialisées après chargement des données)
+let storyMode;
+let explorerMode;
+
 // ==========================================
 // SERVICE WORKER
 // ==========================================
@@ -34,6 +38,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   loadTripData().then(() => {
     hideLoadingScreen();
+
+    // Initialiser les modes immersifs maintenant que tripData est prêt
+    // (story-mode.js et explorer-mode.js ne doivent PAS avoir leur propre DOMContentLoaded)
+    if (typeof StoryMode !== 'undefined') {
+      storyMode = new StoryMode();
+    }
+    if (typeof ExplorerMode !== 'undefined') {
+      explorerMode = new ExplorerMode();
+    }
+
     renderDays();
     setupEventListeners();
 
@@ -137,7 +151,7 @@ function createDayCard(day) {
   card.innerHTML = `
     <div class="day-card-header">
       <div class="day-number">
-        <div class="number">${String(date.getDate()).padStart(2, '0')}</div>
+        <div class="number">${String(day.day).padStart(2, '0')}</div>
         <div class="month">${monthShort}</div>
       </div>
       <div class="day-content">
