@@ -125,7 +125,8 @@ function buildTripData(itineraryRows, placesRows, weatherRows) {
       description: row["Description"] || "",
       highlights: row["Points forts"] ? row["Points forts"].split("|").map(s => s.trim()) : [],
       website: row["Site web"] || null,
-      booking: row["Statut réservation"] || "Non"
+      booking: row["Statut réservation"] || "Non",
+      imageUrl: row["Image URL"] || null
     };
   }
 
