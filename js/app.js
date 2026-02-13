@@ -137,7 +137,7 @@ function createDayCard(day) {
   card.innerHTML = `
     <div class="day-card-header">
       <div class="day-number">
-        <div class="number">${String(day.day).padStart(2, '0')}</div>
+        <div class="number">${String(date.getDate()).padStart(2, '0')}</div>
         <div class="month">${monthShort}</div>
       </div>
       <div class="day-content">
