@@ -1,5 +1,5 @@
 // Service Worker pour PWA Offline
-const CACHE_NAME = 'californie-roadbook-v3'; // Augmenter la version pour forcer la mise à jour
+const CACHE_NAME = 'californie-roadbook-v4'; // Augmenter la version pour forcer la mise à jour
 const urlsToCache = [
   './',
   './index.html',
