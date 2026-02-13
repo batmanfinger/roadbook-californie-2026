@@ -424,13 +424,14 @@ class StoryMode {
   }
 }
 
-// Instance globale
+/*// Instance globale
 let storyMode;
 
 // Initialisation
 document.addEventListener('DOMContentLoaded', () => {
   storyMode = new StoryMode();
 });
+*/
 
 // Fonction pour ouvrir depuis une activité spécifique
 function openStoryFromActivity(activityName) {
