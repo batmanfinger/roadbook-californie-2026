@@ -262,6 +262,10 @@ class StoryMode {
   
   // Ouvrir le mode Story
   open(startIndex = 0) {
+    if (this.stories.length === 0) {
+      console.warn('Story mode : aucune story disponible (placeDetails vide ?)');
+      return;
+    }
     this.currentIndex = startIndex;
     this.isActive = true;
     
