@@ -149,9 +149,9 @@ function buildTripData(itineraryRows, placesRows, weatherRows) {
 
 function loadTripData() {
   const urls = {
-    itinerary: `${SHEET_BASE_URL}&sheet=%F0%9F%93%85%20It%C3%A9n%C3%A9raire`,
-    places:    `${SHEET_BASE_URL}&sheet=%F0%9F%93%8D%20Lieux%20%26%20Infos`,
-    weather:   `${SHEET_BASE_URL}&sheet=%F0%9F%8C%A4%EF%B8%8F%20M%C3%A9t%C3%A9o`
+    itinerary: `${SHEET_BASE_URL}&gid=1067858470`,
+    places:    `${SHEET_BASE_URL}&gid=1270814294`,
+    weather:   `${SHEET_BASE_URL}&gid=738590871`
   };
 
   const fetches = [
