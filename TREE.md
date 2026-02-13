@@ -35,13 +35,13 @@ roadbook-californie-2026/
 │  │  ├─ pier-39.jpg
 │  │  ├─ point-lobos-state-reserve.jpg
 │  │  ├─ point-sur-lighthouse.jpg
-│  │  ├─ san-diego-zoo-safari-park.jpg
 │  │  ├─ santa-barbara-beach.jpg
 │  │  ├─ santa-barbara-zoo.jpg
 │  │  ├─ santa-monica-pier.jpg
 │  │  ├─ sausalito.jpg
 │  │  ├─ stearns-wharf.jpg
-│  │  └─ venice-beach-boardwalk.jpg
+│  │  ├─ venice-beach-boardwalk.jpg
+│  │  └─ zoo-de-san-diego.jpg
 │  └─ README.md  — Documentation Markdown.
 ├─ js/
 │  ├─ app.js  — Point d’entrée: état global, init UI, routing interne.
