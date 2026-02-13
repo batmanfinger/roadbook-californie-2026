@@ -53,13 +53,15 @@ function parseCSV(text) {
 }
 
 function csvToObjects(csvText) {
+  // Normaliser les fins de ligne \r\n en \n
+  csvText = csvText.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
   const rows = parseCSV(csvText);
   if (rows.length < 2) return [];
-  const headers = rows[0];
+  const headers = rows[0].map(h => h.trim());
   return rows.slice(1).map(row => {
     const obj = {};
     headers.forEach((h, i) => {
-      obj[h] = row[i] !== undefined ? row[i] : "";
+      obj[h] = row[i] !== undefined ? row[i].trim() : "";
     });
     return obj;
   });
