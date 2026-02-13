@@ -394,12 +394,13 @@ class ExplorerMode {
   }
 }
 
+/*
 let explorerMode;
 
 document.addEventListener('DOMContentLoaded', () => {
   explorerMode = new ExplorerMode();
 });
-
+*/
 function openExplorerFromPlace(placeName) {
   if (!explorerMode) return;
   
@@ -409,4 +410,5 @@ function openExplorerFromPlace(placeName) {
   } else {
     explorerMode.open(0);
   }
+
 }
