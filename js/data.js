@@ -16,40 +16,44 @@ let tripData = null;
 // ==========================================
 
 function parseCSV(text) {
-  const lines = [];
-  let current = "";
+  // Normaliser les fins de ligne
+  text = text.replace(/\r\n/g, "\n").replace(/\r/g, "\n");
+
+  const result = [];
+  let row = [];
+  let field = "";
   let inQuotes = false;
 
-  for (let i = 0; i < text.length; i++) {
-    const ch = text[i];
-    if (ch === '"') {
-      if (inQuotes && text[i + 1] === '"') {
-        current += '"';
-        i++;
+  for (let i = 0; i <= text.length; i++) {
+    const ch = i < text.length ? text[i] : "\n"; // sentinelle fin de fichier
+
+    if (inQuotes) {
+      if (ch === '"' && text[i + 1] === '"') {
+        field += '"';
+        i++; // guillemet échappé
+      } else if (ch === '"') {
+        inQuotes = false; // fin de champ quoté
       } else {
-        inQuotes = !inQuotes;
+        field += ch;
       }
-    } else if (ch === ',' && !inQuotes) {
-      lines[lines.length - 1] = lines[lines.length - 1] || [];
-      lines[lines.length - 1].push(current.trim());
-      current = "";
-    } else if ((ch === '\n' || ch === '\r') && !inQuotes) {
-      if (current !== "" || (lines[lines.length - 1] && lines[lines.length - 1].length > 0)) {
-        lines[lines.length - 1] = lines[lines.length - 1] || [];
-        lines[lines.length - 1].push(current.trim());
-        lines.push([]);
-      }
-      current = "";
-      if (ch === '\r' && text[i + 1] === '\n') i++;
     } else {
-      current += ch;
+      if (ch === '"') {
+        inQuotes = true; // début de champ quoté
+      } else if (ch === ',') {
+        row.push(field.trim());
+        field = "";
+      } else if (ch === "\n") {
+        row.push(field.trim());
+        field = "";
+        if (row.some(c => c !== "")) result.push(row);
+        row = [];
+      } else {
+        field += ch;
+      }
     }
   }
-  if (current !== "") {
-    lines[lines.length - 1] = lines[lines.length - 1] || [];
-    lines[lines.length - 1].push(current.trim());
-  }
-  return lines.filter(l => l.length > 1 || (l.length === 1 && l[0] !== ""));
+
+  return result;
 }
 
 function csvToObjects(csvText) {
